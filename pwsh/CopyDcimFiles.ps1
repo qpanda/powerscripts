@@ -84,7 +84,7 @@ Set-Variable FAILED -option Constant -value "FAILED"
 #
 
 function Get-ShellProxy {
-	if(-not $global:ShellProxy) {
+	if (-not $global:ShellProxy) {
 		$global:ShellProxy = New-Object -com Shell.Application
 	}
 
@@ -335,14 +335,12 @@ function Log-MaxDcfFolderAndFileNumber {
 
 $device = Get-Device -deviceName $deviceName
 if (!$device) {
-	Write-Error "Unable to access device '$deviceName' (ensure the device is connected)" -category DeviceError
-	Exit
+	Write-Error "Unable to access device '$deviceName' (ensure the device is connected)" -category DeviceError -errorAction Stop
 }
 
 $dcimFolder = Get-SubFolder -parent $device -path $dcimPath
 if (!$dcimFolder) {
-	Write-Error "Unable to access DCIM folder '$dcimPath' on device '$deviceName' (ensure access has been granted)" -category ReadError
-	Exit
+	Write-Error "Unable to access DCIM folder '$dcimPath' on device '$deviceName' (ensure access has been granted)" -category ReadError -errorAction Stop
 }
 
 $targetPath = Resolve-Path $targetPath
@@ -400,6 +398,7 @@ foreach ($dcfFolder in $dcfFolders) {
 	}
 }
 
+# Unfortunately Folder.GetDetailsOf() doesn't return extended file details such as 'Camera maker' and 'Camera model' when invoked on a DCIM file system. As a result we have to check all photos after they have been copied to a regular file system and verify whether they were actually taken with '$deviceName' by checking '$cameraMaker' and/or '$cameraModel'
 Log-LocalFolderMove -sourceFolderName $targetPhotosFolder.self.Path -targetFolderName $targetOthersFolder.self.Path
 $photoFiles = @($targetPhotosFolder.items() | Sort-Object -property Name)
 foreach ($photoFile in $photoFiles) {
