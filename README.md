@@ -24,6 +24,11 @@ Use the following [```Get-Help``` cmdlet](https://docs.microsoft.com/en-us/power
 
 During the copy process the type of each DCF file (photo, video, sidecar, screenshot, other) is identified and the file is placed in a corresponding folder inside ```targetPath```.
 
+#### CfaApps
+[```CfaApps.ps1```](pwsh/CfaApps.ps1) is a PowerShell script to add / remove an executable or all executables in a directory to / from the list of applications allowed to access folders protected by [Controlled Folder Access](https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/controlled-folders).
+
+> **Note:** This PowerShell script requires ```Administrator``` privileges.
+
 ## Compatibility
 * All PowerShell scripts were developed and tested with version 5.1.19041.546 on Windows 10 version 2004 (19041.572).
 
