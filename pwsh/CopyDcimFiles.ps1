@@ -48,6 +48,7 @@
 
 	CopyDcimFiles.ps1 currently has the following limitations:
 	  * To copy only files added to the device since the last time CopyDcimFiles.ps1 was used the number of the last DCF folder and DCF file copied need to be noted down. Future versions may use a state file to keep track of the number of the last DCF folder and DCF file copied on a per-device basis.
+	  * Function Get-TargetFolder requires further work to support file extensions of raw image formats and video file formats from device manufacturers such as Canon, Nikon, GoPro, and DJI.
 	  * When files from more than 10 DCF folders are copied the DCF file names are not unique any more and DCF files with duplicated file names will be skipped. Future versions may add a feature to include the DCF folder number in the target DCF file name.
 
 	[1] https://en.wikipedia.org/wiki/Design_rule_for_Camera_File_system
