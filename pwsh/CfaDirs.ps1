@@ -77,8 +77,8 @@ function Change-CfaDirs {
     }
 }
 
-
 #
 # MAIN
 #
+
 Change-CfaDirs -op $op -path (Resolve-Path $dir)

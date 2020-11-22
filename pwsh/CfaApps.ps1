@@ -83,10 +83,10 @@ function Change-CfaApps {
     }
 }
 
-
 #
 # MAIN
 #
+
 if (-not $exe -and -not $dir) {
     Write-Error "Either parameter '-exe' or '-dir' needs to be specified" -category InvalidArgument -errorAction Stop
 }
