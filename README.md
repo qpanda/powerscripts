@@ -34,6 +34,11 @@ During the copy process the type of each DCF file (photo, video, sidecar, screen
 
 > **Note:** This PowerShell script requires ```Administrator``` privileges.
 
+#### ChangeNetworkCategory
+[```ChangeNetworkCategory.ps1```](pwsh/ChangeNetworkCategory.ps1) is a PowerShell script to change the network category of a [connection profile](https://docs.microsoft.com/en-us/powershell/module/netconnection/?view=win10-ps).
+
+> **Note:** This PowerShell script requires ```Administrator``` privileges.
+
 #### NormalizeImageWidth
 [```NormalizeImageWidth.ps1```](pwsh/NormalizeImageWidth.ps1) is a PowerShell script to normalize the width of all images in a folder.
 
