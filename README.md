@@ -29,6 +29,11 @@ During the copy process the type of each DCF file (photo, video, sidecar, screen
 
 > **Note:** This PowerShell script requires ```Administrator``` privileges.
 
+#### CfaDirs
+[```CfaDirs.ps1```](pwsh/CfaDirs.ps1) is a PowerShell script to add / remove a directory to / from the list of directories protected by [Controlled Folder Access](https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/controlled-folders).
+
+> **Note:** This PowerShell script requires ```Administrator``` privileges.
+
 ## Compatibility
 * All PowerShell scripts were developed and tested with version 5.1.19041.546 on Windows 10 version 2004 (19041.572).
 
