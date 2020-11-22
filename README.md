@@ -34,6 +34,13 @@ During the copy process the type of each DCF file (photo, video, sidecar, screen
 
 > **Note:** This PowerShell script requires ```Administrator``` privileges.
 
+#### NormalizeImageWidth
+[```NormalizeImageWidth.ps1```](pwsh/NormalizeImageWidth.ps1) is a PowerShell script to normalize the width of all images in a folder.
+
+The script first determines the width of the widest image and then adjusts all other images to have the same width.
+
+> **Note:** This PowerShell script requires [ImageMagick](https://imagemagick.org/), more specifically the [```identify```](https://imagemagick.org/script/identify.php) and [```mogrify```](https://imagemagick.org/script/mogrify.php) commands, to be on the path.
+
 ## Compatibility
 * All PowerShell scripts were developed and tested with version 5.1.19041.546 on Windows 10 version 2004 (19041.572).
 
