@@ -19,6 +19,8 @@
 	Normalizes all images in '${env:userprofile}\Temp' to the width of the widest image using a background of 'black'
 .NOTES
     This PowerShell script requires ImageMagick [1], more specifically the 'identify' [2] and 'mogrify' [3] commands, to be on the path.
+
+    This PowerShell script has been developed and tested with version 7.0.10-34 of ImageMagick.
     
     [1] https://imagemagick.org/
     [2] https://imagemagick.org/script/identify.php
@@ -81,5 +83,5 @@ function Normalize-ImageWidth {
 # MAIN
 #
 
-$maxImageWidth = Get-MaxImageWidth -dir (Resolve-Path $dir)
-Normalize-ImageWidth -dir (Resolve-Path $dir) -imageWidth $maxImageWidth
+$maxImageWidth = Get-MaxImageWidth -dir $dir
+Normalize-ImageWidth -dir $dir -imageWidth $maxImageWidth

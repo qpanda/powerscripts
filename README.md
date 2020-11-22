@@ -46,6 +46,15 @@ The script first determines the width of the widest image and then adjusts all o
 
 > **Note:** This PowerShell script requires [ImageMagick](https://imagemagick.org/), more specifically the [```identify```](https://imagemagick.org/script/identify.php) and [```mogrify```](https://imagemagick.org/script/mogrify.php) commands, to be on the path.
 
+> **Note:** This PowerShell script has been developed and tested with version 7.0.10-34 of ImageMagick.
+
+#### Svg2Png
+[```Svg2Png.ps1```](pwsh/Svg2Png.ps1) is a PowerShell script to convert all SVG images in a folder to PNG images.
+
+> **Note:** This PowerShell script requires [ImageMagick](https://imagemagick.org/), more specifically the [```convert```](https://imagemagick.org/script/convert.php) command, to be on the path.
+
+> **Note:** This PowerShell script has been developed and tested with version 7.0.10-34 of ImageMagick.
+
 ## Compatibility
 * All PowerShell scripts were developed and tested with version 5.1.19041.546 on Windows 10 version 2004 (19041.572).
 
