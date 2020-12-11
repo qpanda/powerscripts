@@ -39,7 +39,7 @@
   PS> CopyDcimFiles.ps1 -targetPath temp
 	Copies all DCF files from device 'Apple iPhone' to folder 'temp'
 .EXAMPLE
-	PS> CopyDcimFiles.ps1 -targetPath temp -lastDcfFolderNumber 104 -lastDcfFileNumber 4353
+  PS> CopyDcimFiles.ps1 -targetPath temp -lastDcfFolderNumber 104 -lastDcfFileNumber 4353
 	Copies DCF files with a number greater than 4353 from DCF folders with a number equal to or greater than 104 from device 'Apple iPhone' to folder 'temp'
 .NOTES
 	The DCIM file system [1] is a JEITA specification defining the directory structure, file naming method, character set, file format, and metadata format. It is the de facto industry standard for digital still cameras. The file format of DCF conforms to the Exif specification, but the DCF specification also allows use of any other file formats.

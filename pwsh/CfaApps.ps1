@@ -13,7 +13,7 @@
   PS> CfaApps.ps1 -op add -exe "${env:windir}\explorer.exe"
 	Adds '${env:windir}\explorer.exe' to the list of applications allowed to access folders protected by Controlled Folder Access
 .EXAMPLE
-	PS> CfaApps.ps1 -op add -dir "${env:ProgramFiles}\Adobe"
+  PS> CfaApps.ps1 -op add -dir "${env:ProgramFiles}\Adobe"
     Adds all executables in directory '${env:ProgramFiles}\Adobe' and all its subdirectories to the list of applications allowed to access folders protected by Controlled Folder Access
 .EXAMPLE
   PS> CfaApps.ps1 -op remove -exe "${env:windir}\System32\RuntimeBroker.exe"
