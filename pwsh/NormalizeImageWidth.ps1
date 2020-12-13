@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-	imagemagick, image processing, normalization, identify, mogrify
+    imagemagick, image processing, normalization, identify, mogrify
 .DESCRIPTION
     NormalizeImageWidth.ps1 is a PowerShell script to normalize the width of all images in a folder.
     
@@ -10,13 +10,13 @@
 .PARAMETER gravity
     the 'gravity' setting for the ImageMagick 'mogrify' command used to normalize images (default: 'Center')
 .PARAMETER background
-	the 'background' setting for the ImageMagick 'mogrify' command used to normalize images (default: 'white')
+    the 'background' setting for the ImageMagick 'mogrify' command used to normalize images (default: 'white')
 .EXAMPLE
   PS> NormalizeImageWidth.ps1 -dir "${env:userprofile}\Temp"
-	Normalizes all images in '${env:userprofile}\Temp' to the width of the widest image
+    Normalizes all images in '${env:userprofile}\Temp' to the width of the widest image
 .EXAMPLE
   PS> NormalizeImageWidth.ps1 -dir "${env:userprofile}\Temp" -background black
-	Normalizes all images in '${env:userprofile}\Temp' to the width of the widest image using a background of 'black'
+    Normalizes all images in '${env:userprofile}\Temp' to the width of the widest image using a background of 'black'
 .NOTES
     This PowerShell script requires ImageMagick [1], more specifically the 'identify' [2] and 'mogrify' [3] commands, to be on the path.
 
@@ -41,19 +41,19 @@ function Log-Status {
 
     if ($exitCode -eq 0) {
         Write-Host "OK" -foregroundColor green
-	} else {
+    } else {
         Write-Host "FAILED" -foregroundColor red
-	}
+    }
 }
 
 function Log-Operation {
-	param([string]$image, [int]$imageWidth, [int]$imageHeight)
+    param([string]$image, [int]$imageWidth, [int]$imageHeight)
 
     Write-Host "INFO - Normalizing image '$image' to dimensions '${imageWidth}x${imageHeight}'... " -noNewline
 }
 
 function Get-MaxImageWidth {
-	param([string]$dir)
+    param([string]$dir)
 
     $maxImageWidth = 0
     Get-ChildItem -path $dir -recurse -file -name | ForEach-Object {
@@ -67,7 +67,7 @@ function Get-MaxImageWidth {
 }
 
 function Normalize-ImageWidth {
-	param([string]$dir, [int]$imageWidth)
+    param([string]$dir, [int]$imageWidth)
 
     Get-ChildItem -path $dir -recurse -file -name | ForEach-Object {
         $imageHeight = identify.exe -ping -format %h (Join-Path -path $dir -childPath $_) 2>$null

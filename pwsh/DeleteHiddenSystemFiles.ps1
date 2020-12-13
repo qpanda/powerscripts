@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-	files, clean
+    files, clean
 .DESCRIPTION
     DeleteHiddenSystemFiles.ps1 is a PowerShell script to delete hidden and system files from a directory.
 .PARAMETER dir
@@ -9,7 +9,7 @@
     whether to simulate the delete operation (default: $false)
 .EXAMPLE
   PS> DeleteHiddenSystemFiles.ps1 -dir "${env:userprofile}\Temp"
-	Deletes all hidden and system files recursively from directory '${env:userprofile}\Temp'
+    Deletes all hidden and system files recursively from directory '${env:userprofile}\Temp'
 .NOTES
     This PowerShell script is useful to remove hidden and system files such as 'desktop.ini' and 'Thumbs.db' created by Windows and '.DS_Store' and '._*' created by macOS recursively from a directory.
 #>
@@ -31,21 +31,21 @@ Set-Variable SKIPPED -option Constant -value "SKIPPED"
 #
 
 function Log-Status {
-	param([string]$status)
+    param([string]$status)
 
-  if ($status -ieq $OK) {
-    Write-Host "$status" -foregroundColor green
-	} elseif ($status -ieq $FAILED) {
-    Write-Host "$status" -foregroundColor red
-	} elseif ($status -ieq $SKIPPED) {
-    Write-Host "$status" -foregroundColor yellow
-  } else {
-    Write-Host "$status"
-	}
+    if ($status -ieq $OK) {
+        Write-Host "$status" -foregroundColor green
+    } elseif ($status -ieq $FAILED) {
+        Write-Host "$status" -foregroundColor red
+    } elseif ($status -ieq $SKIPPED) {
+        Write-Host "$status" -foregroundColor yellow
+    } else {
+        Write-Host "$status"
+    }
 }
 
 function Log-Operation {
-	param([string]$file)
+    param([string]$file)
 
     Write-Host "INFO - Deleting hidden/system file '$file'... " -noNewline
 }
@@ -55,17 +55,17 @@ function Log-Operation {
 #
 
 Get-ChildItem -path (Resolve-Path $dir) -attributes Hidden,System -recurse -file -name | ForEach-Object {
-  if ($dryRun) {
-    Log-Operation -file (Join-Path -path (Resolve-Path $dir) -childPath $_)
-    Log-Status -status $SKIPPED
-  } else {
-    try {
-      Log-Operation -file (Join-Path -path (Resolve-Path $dir) -childPath $_)
-      Remove-Item -path (Join-Path -path (Resolve-Path $dir) -childPath $_) -force
-      Log-Status -status $OK
-    } catch [Exception] {
-        Log-Status -status $FAILED
-        Write-Error $_ -errorAction Stop
+    if ($dryRun) {
+        Log-Operation -file (Join-Path -path (Resolve-Path $dir) -childPath $_)
+        Log-Status -status $SKIPPED
+    } else {
+        try {
+            Log-Operation -file (Join-Path -path (Resolve-Path $dir) -childPath $_)
+            Remove-Item -path (Join-Path -path (Resolve-Path $dir) -childPath $_) -force
+            Log-Status -status $OK
+        } catch [Exception] {
+            Log-Status -status $FAILED
+            Write-Error $_ -errorAction Stop
+        }
     }
-  }
 }

@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-	robocopy, backup, sync
+    robocopy, backup, sync
 .DESCRIPTION
     RoboSync.ps1 is a PowerShell script that uses Robocopy to mirror a directory tree.
 .PARAMETER source
@@ -13,7 +13,7 @@
     whether to show Robocopy summary information upon completion (default: $false)
 .EXAMPLE
   PS> RoboSync.ps1 -source a -destination b
-	Uses Robocopy to mirror the directory tree 'a' to 'b'
+    Uses Robocopy to mirror the directory tree 'a' to 'b'
 .NOTES
     According to the Robocopy [1] documentation [2] any exit / return code greater than 8 indicates that there was a failure during the copy/sync/mirror operation.
 
@@ -36,13 +36,13 @@ function Log-Status {
 
     if ($exitCode -le 8) {
         Write-Host "OK" -foregroundColor green
-	} else {
+    } else {
         Write-Host "FAILED" -foregroundColor red
-	}
+    }
 }
 
 function Log-Operation {
-	param([string]$source, [string]$destination)
+    param([string]$source, [string]$destination)
 
     Write-Host "INFO - Syncing '$source' to '$destination'... " -noNewline
 }

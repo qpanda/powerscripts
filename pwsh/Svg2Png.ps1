@@ -1,21 +1,21 @@
 <#
 .SYNOPSIS
-	imagemagick, image processing, conversion, convert, SVG, PNG
+    imagemagick, image processing, conversion, convert, SVG, PNG
 .DESCRIPTION
     Svg2Png.ps1 is a PowerShell script to convert all SVG images in a folder to PNG images.
 .PARAMETER density
     the 'density' setting for the ImageMagick 'convert' command used to normalize images (default: 150, range: [72..1200]))
 .EXAMPLE
   PS> Svg2Png.ps1 -dir "${env:userprofile}\Temp"
-	Converts all SVG images in '${env:userprofile}\Temp' to PNG
+    Converts all SVG images in '${env:userprofile}\Temp' to PNG
 .EXAMPLE
   PS> Svg2Png.ps1 -dir "${env:userprofile}\Temp" -density 300
-	Converts all SVG images in '${env:userprofile}\Temp' to PNG with 300dpi
+    Converts all SVG images in '${env:userprofile}\Temp' to PNG with 300dpi
 .NOTES
     This PowerShell script requires ImageMagick [1], more specifically the 'convert' [2] command, to be on the path.
 
     This PowerShell script has been developed and tested with version 7.0.10-34 of ImageMagick.
-    
+
     [1] https://imagemagick.org/
     [2] https://imagemagick.org/script/convert.php
 #>
@@ -33,13 +33,13 @@ function Log-Status {
 
     if ($exitCode -eq 0) {
         Write-Host "OK" -foregroundColor green
-	} else {
+    } else {
         Write-Host "FAILED" -foregroundColor red
-	}
+    }
 }
 
 function Log-Operation {
-	param([string]$svgImage, [string]$pngImage)
+    param([string]$svgImage, [string]$pngImage)
 
     Write-Host "INFO - Converting image '$svgImage' to '$pngImage'... " -noNewline
 }
