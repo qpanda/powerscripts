@@ -55,8 +55,11 @@ The script first determines the width of the widest image and then adjusts all o
 
 > **Note:** This PowerShell script has been developed and tested with version 7.0.10-34 of ImageMagick.
 
-#### Svg2Png
+#### RoboSync
 [```RoboSync.ps1```](pwsh/RoboSync.ps1) is a PowerShell script that uses [Robocopy](https://en.wikipedia.org/wiki/Robocopy) to mirror a directory tree.
+
+#### DeleteHiddenSystemFiles
+[```DeleteHiddenSystemFiles.ps1```](pwsh/DeleteHiddenSystemFiles.ps1) is a PowerShell script to delete hidden and system files from a directory.
 
 ## Compatibility
 All PowerShell scripts were developed and tested with version 5.1.19041.546 on Windows 10 version 2004 (19041.572).
