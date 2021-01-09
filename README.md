@@ -1,6 +1,6 @@
 PowerScripts
 ================
-A collection of useful scripts for power users.
+A collection of useful scripts for power users on Windows and macOS.
 
 ## PowerShell
 ### Prerequisites
@@ -61,8 +61,19 @@ The script first determines the width of the widest image and then adjusts all o
 #### DeleteHiddenSystemFiles
 [```DeleteHiddenSystemFiles.ps1```](pwsh/DeleteHiddenSystemFiles.ps1) is a PowerShell script to delete hidden and system files from a directory.
 
+## Zsh
+### Usage
+Invoke Zsh scripts without arguments to get usage information. Use the following ```sed``` command to get parameter descriptions, examples, and additional information for all Zsh scripts in **PowerScripts**:
+
+    $ sed -n '/###/,/###/p' powerscripts\zsh\<name>.zsh
+
+### Scripts
+#### rsync
+[```rsync.zsh```](zsh/rsync.zsh) is a Zsh script that uses rsync to mirror a directory tree.
+
 ## Compatibility
-All PowerShell scripts were developed and tested with version 5.1.19041.546 on Windows 10 version 2004 (19041.572).
+* All PowerShell scripts were developed and tested with version 5.1.19041.546 on Windows 10 version 2004 (19041.572).
+* All Zsh scripts were developed and tested with version 5.8 on macOS Big Sur 11.1.
 
 ## License
 **PowerScripts** is licensed under the MIT license.
