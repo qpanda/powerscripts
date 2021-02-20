@@ -63,7 +63,7 @@ The script first determines the width of the widest image and then adjusts all o
 
 ## Zsh
 ### Configuration
-The Zsh configuration files [```.zshrc```](zsh/.zshrc) and [```.zshenv```](zsh/.zshenv) are not required to execute the Zsh scripts in **PowerScripts** but change settings to improve the user experience.
+The Zsh configuration files [```.zshrc```](zsh/.zshrc) and [```.zshenv```](zsh/.zshenv), Vim configuration file [```.vimrc```](zsh/.vimrc), and Git configuration file [```.gitconfig```](zsh/.gitconfig) improve developer experience.
 
 ### Usage
 Invoke Zsh scripts without arguments to get usage information. Use the following ```sed``` command to get parameter descriptions, examples, and additional information for all Zsh scripts in **PowerScripts**:

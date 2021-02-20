@@ -1,0 +1,7 @@
+[user]
+	name = qpanda
+	email = 7557807+qpanda@users.noreply.github.com
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
