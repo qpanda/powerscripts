@@ -21,6 +21,7 @@ set -eu -o pipefail
 # CONSTANTS
 #
 
+NONE='\033[0m'
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 LOG_FILE=${TMPDIR}/rsync.log
@@ -47,7 +48,7 @@ mkdir -p ${2}
 
 echo -n "INFO - Syncing '${1}' to '${2}'... "
 if rsync -rth --delete --delete-excluded --delete-during --stats --exclude '.DS_Store' --exclude $'Icon\r' --exclude '._*' --exclude 'Thumbs.db' --exclude '~$*' --exclude '.TemporaryItems' --exclude '.DocumentRevisions-V100' --exclude '.Spotlight-V100' --exclude '.Trashes' --exclude '.fseventsd' --log-file=${LOG_FILE} "${1}/" "${2}" 1>${LOG_FILE} 2>&1; then
-  echo "${GREEN}OK"
+  echo "${GREEN}OK${NONE}"
 else
-  echo "${RED}FAILED"
+  echo "${RED}FAILED${NONE}"
 fi
