@@ -61,6 +61,9 @@ The script first determines the width of the widest image and then adjusts all o
 #### DeleteHiddenSystemFiles
 [```DeleteHiddenSystemFiles.ps1```](pwsh/DeleteHiddenSystemFiles.ps1) is a PowerShell script to delete hidden and system files from a directory.
 
+#### RunAs
+[```RunAs.ps1```](pwsh/RunAs.ps1) is a PowerShell script to invoke another PowerShell scripts with elevated priviledges.
+
 ## Zsh
 ### Configuration
 The Zsh configuration files [```.zshrc```](zsh/.zshrc) and [```.zshenv```](zsh/.zshenv), Vim configuration file [```.vimrc```](zsh/.vimrc), and Git configuration file [```.gitconfig```](zsh/.gitconfig) improve developer experience.
