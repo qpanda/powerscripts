@@ -4,13 +4,15 @@
 .DESCRIPTION
     RunAs.ps1 is a PowerShell script to invoke another PowerShell scripts with elevated priviledges
 .PARAMETER script
-    path to the PowerShell script to run with elevated priviledges
+    name or path to the PowerShell script to run with elevated priviledges
+.PARAMETER arguments
+    arguments passed to the PowerShell script run with elevated priviledges
 .PARAMETER executionPolicy
     the PowerShell executionPolicy used to execution the script (default: 'RemoteSigned')
 .PARAMETER logfile
     path to the logfile (default: '${env:Temp}/runas.log')
-.PARAMETER arguments
-    arguments to pass to the script
+.PARAMETER userPath
+    whether to use the ${Env:Path} of the user calling this script (default: $true)
 .EXAMPLE
   PS> RunAs.ps1 CfaApps.ps1 -op add -exe "${env:windir}\explorer.exe"
     Runs 'CfaApps.ps1 -op add -exe "${env:windir}\explorer.exe"' with elevated priviledges
@@ -25,7 +27,8 @@ param (
     [string][Parameter(Mandatory=$true)][ValidateScript({Test-Path -pathType leaf $_})]$script,
     [string[]][Parameter(ValueFromRemainingArguments=$true)]$arguments,
     [string][ValidateNotNullOrEmpty()]$executionPolicy = "RemoteSigned",
-    [string][ValidateScript({Test-Path -isValid $_})]$logfile = "${env:Temp}/runas.log"
+    [string][ValidateScript({Test-Path -isValid $_})]$logfile = "${env:Temp}/runas.log",
+    [bool]$userPath = $true
 )
 
 #
@@ -57,15 +60,26 @@ function Log-Operation {
     Write-Host "INFO - Running PowerShell script '$script $arguments' as Administrator... " -noNewline
 }
 
+function Get-Command {
+    param([bool]$userPath)
+
+    if ($userPath) {
+        return "Set-Item -Path Env:Path -Value '${Env:Path}'; $script $arguments *>$logfile"
+    }
+
+    return "$script $arguments *>$logfile"
+}
+
 #
 # MAIN
 #
 
 $script = Resolve-Path $script
+$command = Get-Command -userPath $userPath
 
 try {
     Log-Operation -script $script -arguments $arguments
-    Start-Process powershell -argumentList "-executionPolicy $executionPolicy", "-command $script $arguments *>$logfile" -verb RunAs -wait -windowStyle hidden
+    Start-Process powershell -argumentList "-executionPolicy $executionPolicy", "-command $command" -verb RunAs -wait -windowStyle hidden
     Log-Status -status $OK
     Write-Host ""
     Get-Content $logfile
