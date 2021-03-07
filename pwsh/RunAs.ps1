@@ -23,9 +23,9 @@
 #>
 param (
     [string][Parameter(Mandatory=$true)][ValidateScript({Test-Path -pathType leaf $_})]$script,
+    [string[]][Parameter(ValueFromRemainingArguments=$true)]$arguments,
     [string][ValidateNotNullOrEmpty()]$executionPolicy = "RemoteSigned",
-    [string][ValidateScript({Test-Path -isValid $_})]$logfile = "${env:Temp}/runas.log",
-    [string[]][Parameter(ValueFromRemainingArguments=$true)]$arguments
+    [string][ValidateScript({Test-Path -isValid $_})]$logfile = "${env:Temp}/runas.log"
 )
 
 #
@@ -61,9 +61,11 @@ function Log-Operation {
 # MAIN
 #
 
+$script = Resolve-Path $script
+
 try {
     Log-Operation -script $script -arguments $arguments
-    Start-Process powershell -argumentList "-executionPolicy $executionPolicy", "-command &{&{$script $arguments} *>$logfile}" -verb RunAs -wait -windowStyle hidden
+    Start-Process powershell -argumentList "-executionPolicy $executionPolicy", "-command $script $arguments *>$logfile" -verb RunAs -wait -windowStyle hidden
     Log-Status -status $OK
     Write-Host ""
     Get-Content $logfile
