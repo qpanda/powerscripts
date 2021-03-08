@@ -24,7 +24,7 @@
     [3] https://stackoverflow.com/questions/50765949/redirect-stdout-stderr-from-powershell-script-as-admin-through-start-process
 #>
 param (
-    [string][Parameter(Mandatory=$true)][ValidateScript({Test-Path -pathType leaf $_})]$script,
+    [string][Parameter(Mandatory=$true)][ValidateScript({Test-Path -isValid $_})]$script,
     [string[]][Parameter(ValueFromRemainingArguments=$true)]$arguments,
     [string][ValidateNotNullOrEmpty()]$executionPolicy = "RemoteSigned",
     [string][ValidateScript({Test-Path -isValid $_})]$logfile = "${env:Temp}/runas.log",
@@ -64,22 +64,21 @@ function Get-Command {
     param([bool]$userPath)
 
     if ($userPath) {
-        return "Set-Item -Path Env:Path -Value '${Env:Path}'; $script $arguments *>$logfile"
+        return "Set-Item -Path Env:Path -Value '${Env:Path}'; &{$script $arguments} *>$logfile"
     }
 
-    return "$script $arguments *>$logfile"
+    return "&{$script $arguments} *>$logfile"
 }
 
 #
 # MAIN
 #
 
-$script = Resolve-Path $script
 $command = Get-Command -userPath $userPath
 
 try {
     Log-Operation -script $script -arguments $arguments
-    Start-Process powershell -argumentList "-executionPolicy $executionPolicy", "-command $command" -verb RunAs -wait -windowStyle hidden
+    Start-Process powershell -argumentList "-executionPolicy $executionPolicy", "-nonInteractive", "-command $command" -verb RunAs -wait -windowStyle hidden
     Log-Status -status $OK
     Write-Host ""
     Get-Content $logfile
