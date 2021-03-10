@@ -61,10 +61,10 @@ function Get-Command {
     param([bool]$userPath)
 
     if ($userPath) {
-        return "Set-Item -Path Env:Path -Value '${Env:Path}'; $script $arguments; Write-Host '`nPress Enter to close window...' -noNewLine; Read-Host"
+        return "Set-Item -Path Env:Path -Value '${Env:Path}'; $script $arguments; Write-Host '`nPress Enter to close window' -noNewLine; Read-Host"
     }
 
-    return "$script $arguments; Write-Host '`nPress Enter to close window...' -noNewLine; Read-Host"
+    return "$script $arguments; Write-Host '`nPress Enter to close window' -noNewLine; Read-Host"
 }
 
 #
@@ -75,7 +75,7 @@ $command = Get-Command -userPath $userPath
 
 try {
     Log-Operation -script $script -arguments $arguments
-    Start-Process powershell -argumentList "-executionPolicy $executionPolicy", "-command $command" -verb RunAs -wait
+    Start-Process -FilePath powershell -verb RunAs -wait -argumentList "-executionPolicy $executionPolicy", "-command $command"
     Log-Status -status $OK
 } catch [Exception] {
     Log-Status -status $FAILED
