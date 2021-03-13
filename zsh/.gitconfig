@@ -4,3 +4,11 @@
 	tool = vimdiff
 [mergetool]
 	keepBackup = false
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	rb = rebase
+	di = diff
+	lo = log
