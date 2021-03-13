@@ -1,5 +1,9 @@
 syntax on
 filetype plugin indent on
+highlight SpecialKey ctermfg=8 guifg=DimGrey
+
+nmap <Leader>s :set invlist<CR>
+nmap <Leader>w :set wrap!<CR>
 
 set autoread
 set belloff=all
@@ -20,6 +24,7 @@ set ruler
 set showcmd
 set breakindent
 set linebreak
+set listchars=nbsp:·,space:·,trail:·,tab:»›,extends:>,precedes:<
 
 set autoindent
 set expandtab
