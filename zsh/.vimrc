@@ -2,8 +2,10 @@ syntax on
 filetype plugin indent on
 highlight SpecialKey ctermfg=8 guifg=DimGrey
 
-nmap <Leader>s :set invlist<CR>
 nmap <Leader>w :set wrap!<CR>
+nmap <Leader>W :set nowrap<CR>
+nmap <Leader>s :set list!<CR>
+nmap <Leader>S :set list<CR>
 
 set autoread
 set belloff=all
@@ -13,6 +15,8 @@ set ttimeoutlen=50
 set ttyfast
 set viminfo+=!
 set ffs=unix,dos,mac
+set encoding=utf-8
+set fileencoding=utf-8
 
 set nobackup
 set noswapfile
