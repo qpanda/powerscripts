@@ -31,7 +31,7 @@
 	feal = "fetch --all"
 	fepr = "fetch --prune"
 	adal = "add --all"
-	cobr = "checkout --b"
+	cobr = "checkout -b"
 	coth = "checkout --theirs"
 	coou = "checkout --ours"
 [rebase]
