@@ -6,6 +6,8 @@ nmap <Leader>w :set wrap!<CR>
 nmap <Leader>W :set nowrap<CR>
 nmap <Leader>s :set list!<CR>
 nmap <Leader>S :set list<CR>
+nmap <Leader>p :set paste!<CR>
+nmap <Leader>P :set nopaste<CR>
 
 set autoread
 set belloff=all
