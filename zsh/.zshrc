@@ -20,7 +20,7 @@ alias fless="less -iS +F"
 export HISTSIZE=10000
 export SAVEHIST=10000
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
-export PROMPT='%F{cyan}%n@%m%f %F{blue}%1~%f %(?.%F{green}%#%f.%F{red}%#%f) '
+export PROMPT='%F{cyan}%n@%m%f·%F{blue}%1~%f·%(?.%F{green}%#%f.%F{red}%#%f) '
 
 autoload -U compinit && compinit
 autoload -U edit-command-line && zle -N edit-command-line
