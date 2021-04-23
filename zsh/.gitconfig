@@ -21,6 +21,9 @@
 	pl = pull
 	pu = push
 	ad = add
+	cp = cherry-pick
+	rp = rev-parse
+	so = show
 	mt = mergetool
 	dt = difftool
 	plrb = "pull --rebase"
@@ -28,6 +31,9 @@
 	rbco = "rebase --continue"
 	rbsk = "rebase --skip"
 	rbab = "rebase --abort"
+	cpco = "cherry-pick --continue"
+	cpsk = "cherry-pick --skip"
+	cpab = "cherry-pick --abort"
 	pufl = "push --force-with-lease"
 	pufo = "push --force"
 	puus = "push --set-upstream"
@@ -38,3 +44,9 @@
 	cobr = "checkout -b"
 	coth = "checkout --theirs"
 	coou = "checkout --ours"
+	bral = "branch --all"
+	lool = "log --oneline"
+	dino = "diff --name-only"
+	dins = "diff --name-status"
+	dist = "diff --stat"
+	dtdd = "difftool --dir-diff"
