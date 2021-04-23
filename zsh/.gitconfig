@@ -2,6 +2,7 @@
 	tool = vimdiff
 [merge]
 	tool = vimdiff
+	conflictStyle = diff3
 [rebase]
 	autoSquash = true
 	missingCommitsCheck = true
