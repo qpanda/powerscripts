@@ -68,6 +68,18 @@ The script first determines the width of the widest image and then adjusts all o
 ### Configuration
 The Zsh configuration files [```.zshrc```](zsh/.zshrc) and [```.zshenv```](zsh/.zshenv), Vim configuration file [```.vimrc```](zsh/.vimrc), and Git configuration file [```.gitconfig```](zsh/.gitconfig) improve developer experience.
 
+The following lines can be added to the [```.zshrc```](zsh/.zshrc) file to show the current Git branch and action in an additional prompt on the right side of the terminal screen.
+
+    setopt PROMPT_SUBST
+    
+    zstyle ':vcs_info:*' enable git
+    zstyle ':vcs_info:git:*' formats '[%F{green}%b%f]'
+    zstyle ':vcs_info:git:*' actionformats '[%F{red}%a%f|%F{green}%b%f]'
+    
+    export RPROMPT='${vcs_info_msg_0_}'
+
+    autoload -U vcs_info && precmd_vcs_info() {vcs_info} && precmd_functions+=(precmd_vcs_info)
+
 ### Usage
 Invoke Zsh scripts without arguments to get usage information. Use the following ```sed``` command to get parameter descriptions, examples, and additional information for all Zsh scripts in **PowerScripts**:
 
