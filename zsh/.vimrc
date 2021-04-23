@@ -8,6 +8,12 @@ nmap <Leader>s :set list!<CR>
 nmap <Leader>S :set list<CR>
 nmap <Leader>p :set paste!<CR>
 nmap <Leader>P :set nopaste<CR>
+nmap <Leader>l :diffget local<CR>
+nmap <Leader>L :1,$+1diffget local<CR>
+nmap <Leader>r :diffget remote<CR>
+nmap <Leader>R :1,$+1diffget remote<CR>
+nmap <Leader>b :diffget base<CR>
+nmap <Leader>B :1,$+1diffget base<CR>
 
 set autoread
 set belloff=all
