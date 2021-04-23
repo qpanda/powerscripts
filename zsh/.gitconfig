@@ -2,6 +2,9 @@
 	tool = vimdiff
 [merge]
 	tool = vimdiff
+[rebase]
+	autoSquash = true
+	missingCommitsCheck = true
 [mergetool]
 	keepBackup = false
 [alias]
@@ -34,6 +37,3 @@
 	cobr = "checkout -b"
 	coth = "checkout --theirs"
 	coou = "checkout --ours"
-[rebase]
-	autoSquash = true
-	missingCommitsCheck = true
