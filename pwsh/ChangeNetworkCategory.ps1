@@ -11,7 +11,7 @@
   PS> ChangeNetworkCategory.ps1 -category Private
     Changes the connection profile of network 'LAN' to network category 'Private'
 .EXAMPLE
-  PS> ChangeNetworkCategory.ps1 -name "WiFi" -category Public
+  PS> ChangeNetworkCategory.ps1 -network "WiFi" -category Public
     Changes the connection profile of network 'WiFi' to network category 'Public'
 .NOTES
     This PowerShell script requires Administrator privileges.
@@ -56,7 +56,7 @@ function Log-Operation {
 #
 
 try {
-    $fromCategory = Get-NetConnectionProfile -name LAN | Select -expandProperty NetworkCategory
+    $fromCategory = Get-NetConnectionProfile -name $network | Select -expandProperty NetworkCategory
     Log-Operation -network $network -fromCategory $fromCategory -category $category
     Set-NetConnectionProfile -name $network -networkCategory $category -errorAction Stop
     Log-Status -status $OK
