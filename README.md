@@ -1,6 +1,6 @@
 PowerScripts
 ================
-A collection of useful scripts for power users on Windows and macOS.
+A collection of useful scripts and run commands / dot files for power users on Windows and macOS.
 
 ## PowerShell
 ### Prerequisites
@@ -65,10 +65,20 @@ The script first determines the width of the widest image and then adjusts all o
 [```RunAs.ps1```](pwsh/RunAs.ps1) is a PowerShell script to invoke another PowerShell scripts with elevated priviledges.
 
 ## Zsh
-### Configuration
-The configuration files [```.zshrc```](zsh/.zshrc) and [```.zshenv```](zsh/.zshenv) improve the user / developer experience of Zsh.
+### Usage
+Invoke Zsh scripts without arguments to get usage information. Use the following ```sed``` command to get parameter descriptions, examples, and additional information for all Zsh scripts in **PowerScripts**:
 
-The following lines can be added to the [```.zshrc```](zsh/.zshrc) file to show the current Git branch and Git action in an additional prompt on the right side of the terminal screen.
+    $ sed -n '/###/,/###/p' powerscripts\zsh\<name>.zsh
+
+### Scripts
+#### rsync
+[```rsync.zsh```](zsh/rsync.zsh) is a Zsh script that uses rsync to mirror a directory tree.
+
+## Run Commands / Dot Files
+### Description
+The [```rc```](rc/) folder contains various [run commands](https://en.wikipedia.org/wiki/Run_commands) / [dot files](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory#Unix_and_Unix-like_environments) for commonly used command line tools.
+
+To show Git branch and action information in an additional prompt on the right hand side in Zsh shells add the following lines to the [```.zshrc```](zsh/.zshrc) file.
 
     setopt PROMPT_SUBST
     
@@ -79,19 +89,6 @@ The following lines can be added to the [```.zshrc```](zsh/.zshrc) file to show 
     export RPROMPT='${vcs_info_msg_0_}'
 
     autoload -U vcs_info && precmd_vcs_info() {vcs_info} && precmd_functions+=(precmd_vcs_info)
-
-### Usage
-Invoke Zsh scripts without arguments to get usage information. Use the following ```sed``` command to get parameter descriptions, examples, and additional information for all Zsh scripts in **PowerScripts**:
-
-    $ sed -n '/###/,/###/p' powerscripts\zsh\<name>.zsh
-
-### Scripts
-#### rsync
-[```rsync.zsh```](zsh/rsync.zsh) is a Zsh script that uses rsync to mirror a directory tree.
-
-## Run Commands
-### Description
-The [```rc```](rc/) folder contains various [run commands](https://en.wikipedia.org/wiki/Run_commands) or [dot files](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory#Unix_and_Unix-like_environments) for commonly used command line tools.
 
 ## Compatibility
 * All PowerShell scripts were developed and tested with version 5.1.19041.546 on Windows 10 version 2004 (19041.572).
