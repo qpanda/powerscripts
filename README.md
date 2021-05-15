@@ -78,7 +78,7 @@ Invoke Zsh scripts without arguments to get usage information. Use the following
 ### Description
 The [```rc```](rc/) folder contains various [run commands](https://en.wikipedia.org/wiki/Run_commands) / [dot files](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory#Unix_and_Unix-like_environments) for commonly used command line tools.
 
-To show Git branch and action information in an additional prompt on the right hand side in Zsh shells add the following lines to the [```.zshrc```](zsh/.zshrc) file.
+To show Git branch and action information in an additional right hand side prompt in Zsh add the following lines to the [```.zshrc```](rc/.zshrc) file.
 
     setopt PROMPT_SUBST
     
