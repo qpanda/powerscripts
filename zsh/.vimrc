@@ -2,12 +2,18 @@ syntax on
 filetype plugin indent on
 highlight SpecialKey ctermfg=8 guifg=DimGrey
 
+nmap <Leader>q :q<CR>
+nmap <Leader>Q :qa<CR>
+nmap <Leader>x :x<CR>
+nmap <Leader>X :xa<CR>
 nmap <Leader>w :set wrap!<CR>
 nmap <Leader>W :set nowrap<CR>
 nmap <Leader>s :set list!<CR>
 nmap <Leader>S :set list<CR>
 nmap <Leader>p :set paste!<CR>
 nmap <Leader>P :set nopaste<CR>
+nmap <Leader>h :set hlsearch!<CR>
+nmap <Leader>H :set nohlsearch<CR>
 nmap <Leader>l :diffget local<CR>
 nmap <Leader>L :1,$+1diffget local<CR>
 nmap <Leader>r :diffget remote<CR>
@@ -47,6 +53,7 @@ set tabstop=4
 set incsearch
 set ignorecase
 set smartcase
+set hlsearch
 
 set backspace=indent,eol,start
 set formatoptions=tcqj
