@@ -66,9 +66,9 @@ The script first determines the width of the widest image and then adjusts all o
 
 ## Zsh
 ### Configuration
-The Zsh configuration files [```.zshrc```](zsh/.zshrc) and [```.zshenv```](zsh/.zshenv), Vim configuration file [```.vimrc```](zsh/.vimrc), and Git configuration file [```.gitconfig```](zsh/.gitconfig) improve developer experience.
+The configuration files [```.zshrc```](zsh/.zshrc) and [```.zshenv```](zsh/.zshenv) improve the user / developer experience of Zsh.
 
-The following lines can be added to the [```.zshrc```](zsh/.zshrc) file to show the current Git branch and action in an additional prompt on the right side of the terminal screen.
+The following lines can be added to the [```.zshrc```](zsh/.zshrc) file to show the current Git branch and Git action in an additional prompt on the right side of the terminal screen.
 
     setopt PROMPT_SUBST
     
@@ -88,6 +88,10 @@ Invoke Zsh scripts without arguments to get usage information. Use the following
 ### Scripts
 #### rsync
 [```rsync.zsh```](zsh/rsync.zsh) is a Zsh script that uses rsync to mirror a directory tree.
+
+## Run Commands
+### Description
+The [```rc```](rc/) folder contains various [run commands](https://en.wikipedia.org/wiki/Run_commands) or [dot files](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory#Unix_and_Unix-like_environments) for commonly used command line tools.
 
 ## Compatibility
 * All PowerShell scripts were developed and tested with version 5.1.19041.546 on Windows 10 version 2004 (19041.572).
