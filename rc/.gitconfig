@@ -26,6 +26,7 @@
 	so = show
 	mt = mergetool
 	dt = difftool
+[alias]
 	plrb = "pull --rebase"
 	rbin = "rebase --interactive"
 	rbco = "rebase --continue"
