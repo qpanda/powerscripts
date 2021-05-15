@@ -50,3 +50,10 @@
 	dins = "diff --name-status"
 	dist = "diff --stat"
 	dtdd = "difftool --dir-diff"
+[alias]
+	last-commit = "rev-parse --verify HEAD"
+	current-branch = "rev-parse --abbrev-ref HEAD"
+	current-remote = "remote show"
+	fixup-commit = "!git commit --fixup $(git last-commit)"
+	push-upstream = "!git push --set-upstream $(git current-remote) $(git current-branch)"
+	purge-branches = "!git branch -v | fgrep '[gone]' | fgrep -v '*' | awk '{ print $1;}' | xargs git branch -d"
