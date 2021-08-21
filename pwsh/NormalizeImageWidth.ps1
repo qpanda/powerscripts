@@ -57,7 +57,7 @@ function Get-MaxImageWidth {
 
     $maxImageWidth = 0
     Get-ChildItem -path $dir -recurse -file -name | ForEach-Object {
-        $imageWidth = identify.exe -ping -format %w (Join-Path -path $dir -childPath $_) 2>$null
+        $imageWidth = [int](identify.exe -ping -format %w (Join-Path -path $dir -childPath $_) 2>$null)
         if ($lastExitCode -eq 0 -and $imageWidth -gt $maxImageWidth) {
             $maxImageWidth = $imageWidth
         }
