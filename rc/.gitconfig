@@ -24,6 +24,7 @@
 	cp = cherry-pick
 	rp = rev-parse
 	so = show
+	me = merge
 	mt = mergetool
 	dt = difftool
 [alias]
@@ -50,11 +51,13 @@
 	dino = "diff --name-only"
 	dins = "diff --name-status"
 	dist = "diff --stat"
+	mefo = "merge --ff-only"
 	dtdd = "difftool --dir-diff"
 [alias]
 	last-commit = "rev-parse --verify HEAD"
+	fixup-commit = "!git commit --fixup $(git last-commit)"
 	current-branch = "rev-parse --abbrev-ref HEAD"
 	current-remote = "remote show"
-	fixup-commit = "!git commit --fixup $(git last-commit)"
 	push-upstream = "!git push --set-upstream $(git current-remote) $(git current-branch)"
-	purge-branches = "!git branch -v | fgrep '[gone]' | fgrep -v '*' | awk '{ print $1;}' | xargs git branch -d"
+	purge-branches = "!git branch -v | fgrep '[gone]' | fgrep -v '*' | awk '{print $1;}' | xargs git branch -D"
+	reset-branch = "!git reset --hard $(git current-remote)/$(git current-branch) && git clean --force -d"
