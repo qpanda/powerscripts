@@ -5,7 +5,7 @@
 	conflictStyle = diff3
 [rebase]
 	autoSquash = true
-	missingCommitsCheck = true
+	missingCommitsCheck = warn
 [mergetool]
 	keepBackup = false
 [alias]
