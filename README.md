@@ -76,8 +76,9 @@ Invoke Zsh scripts without arguments to get usage information. Use the following
 
 ## Run Commands / Dot Files
 ### Description
-The [```rc```](rc/) folder contains various [run commands](https://en.wikipedia.org/wiki/Run_commands) / [dot files](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory#Unix_and_Unix-like_environments) for commonly used command line tools.
+The [```rc```](rc/), [```rc-macos```](rc-macos/), and [```rc-windows```](rc-windows/)  folder contains various [run commands](https://en.wikipedia.org/wiki/Run_commands) / [dot files](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory#Unix_and_Unix-like_environments) for command line shells and tools.
 
+### Zsh
 To show Git branch and action information in an additional right hand side prompt in Zsh add the following lines to the [```.zshrc```](rc/.zshrc) file.
 
     setopt PROMPT_SUBST
@@ -89,6 +90,11 @@ To show Git branch and action information in an additional right hand side promp
     export RPROMPT='${vcs_info_msg_0_}'
 
     autoload -U vcs_info && precmd_vcs_info() {vcs_info} && precmd_functions+=(precmd_vcs_info)
+
+### Powershell
+To get Git command auto completion install [posh-git](https://github.com/dahlbyk/posh-git) and then add the following lines to the [```profile.ps1```](rc-windows/.profile.ps1) file.
+
+    Import-Module posh-git
 
 ## Compatibility
 * All PowerShell scripts were developed and tested with version 5.1.19041.546 on Windows 10 version 2004 (19041.572).
