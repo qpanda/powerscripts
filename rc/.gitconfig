@@ -59,5 +59,4 @@
 	current-branch = "rev-parse --abbrev-ref HEAD"
 	current-remote = "remote show"
 	push-upstream = "!git push --set-upstream $(git current-remote) $(git current-branch)"
-	purge-branches = "!git branch -v | fgrep '[gone]' | fgrep -v '*' | awk '{print $1;}' | xargs git branch -D"
-	reset-branch = "!git reset --hard $(git current-remote)/$(git current-branch) && git clean --force -d"
+	reset-branch = "!git reset --hard $(git current-remote)/$(git current-branch); git clean --force -d"
