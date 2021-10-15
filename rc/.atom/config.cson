@@ -1,0 +1,32 @@
+"*":
+  core:
+    disabledPackages: [
+      "wrap-guide"
+      "git-diff"
+      "github"
+      "language-clojure"
+      "language-coffee-script"
+      "language-gfm"
+      "language-mustache"
+      "language-objective-c"
+      "language-perl"
+      "language-php"
+      "language-ruby"
+      "language-ruby-on-rails"
+      "language-toml"
+      "tree-view"
+    ]
+    openEmptyEditorOnStart: false
+    restorePreviousWindowsOnStart: "no"
+    telemetryConsent: "no"
+    themes: [
+      "one-light-ui"
+      "one-light-syntax"
+    ]
+    uriHandlerRegistration: "never"
+  editor:
+    showInvisibles: true
+  "markdown-preview": {}
+  welcome:
+    showOnStartup: false
+  "wrap-guide": {}
