@@ -1,0 +1,38 @@
+{
+    // general settings
+    "workbench.colorTheme": "Default Light+",
+    "editor.renderControlCharacters": true,
+    "editor.renderWhitespace": "all",
+    "diffEditor.ignoreTrimWhitespace": false,
+
+    // terminal settings
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell",
+            "args": ["-NoLogo", "-ExecutionPolicy", "RemoteSigned", "-NoExit", "-Command", "Import-Module posh-git"]
+        },
+    },
+    "terminal.integrated.env.windows": {
+        "GOROOT":"${env:USERPROFILE}\\Tools\\go",
+        "PATH":"${env:PATH};${env:USERPROFILE}\\Tools\\Git\\bin;${env:USERPROFILE}\\Tools\\go\\bin;${env:USERPROFILE}\\.cargo\\bin",
+    },
+
+    // git settings
+    "git.autofetch": true,
+    "git.path": "${env:USERPROFILE}\\Tools\\Git\\bin\\git.exe", // expansion of ${env:USERPROFILE} requires
+
+    // go settings
+    "go.goroot": "${env:USERPROFILE}\\Tools\\go", // expansion of ${env:USERPROFILE} requires
+    "go.formatTool": "goimports",
+    "go.useLanguageServer": true,
+    "go.enableCodeLens": {
+        "references": false,
+        "runtest": true
+    },
+
+    // rust settings
+    "rust-client.channel": "stable",
+    "rust-client.rustupPath": "${env:USERPROFILE}\\.cargo\\bin\\rustup", // expansion of ${env:USERPROFILE} requires
+}
