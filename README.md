@@ -103,6 +103,9 @@ Invoke Zsh scripts without arguments to get usage information. Use the following
 ### rsync
 [```rsync.zsh```](_macos_/zsh/rsync.zsh) is a Zsh script that uses rsync to mirror a directory tree.
 
+# Conventions
+Variables in files that need to be expanded / replaced / set manually are indicated by the naming convention ```${manual:<variable>}```.
+
 # Compatibility
 * All PowerShell scripts were developed and tested with version 5.1.19041.546 on Windows 10 version 2004 (19041.572).
 * All Zsh scripts were developed and tested with version 5.8 on macOS Big Sur 11.1.

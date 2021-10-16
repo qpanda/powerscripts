@@ -1,11 +1,9 @@
 {
-    // general settings
     "workbench.colorTheme": "Default Light+",
     "editor.renderControlCharacters": true,
     "editor.renderWhitespace": "all",
     "diffEditor.ignoreTrimWhitespace": false,
 
-    // terminal settings
     "terminal.integrated.defaultProfile.windows": "PowerShell",
     "terminal.integrated.profiles.windows": {
         "PowerShell": {
@@ -19,12 +17,10 @@
         "PATH":"${env:PATH};${env:USERPROFILE}\\Tools\\Git\\bin;${env:USERPROFILE}\\Tools\\go\\bin;${env:USERPROFILE}\\.cargo\\bin",
     },
 
-    // git settings
     "git.autofetch": true,
-    "git.path": "${env:USERPROFILE}\\Tools\\Git\\bin\\git.exe", // expansion of ${env:USERPROFILE} required
+    "git.path": "${manual:USERPROFILE}\\Tools\\Git\\bin\\git.exe",
 
-    // go settings
-    "go.goroot": "${env:USERPROFILE}\\Tools\\go", // expansion of ${env:USERPROFILE} required
+    "go.goroot": "${manual:USERPROFILE}\\Tools\\go",
     "go.formatTool": "goimports",
     "go.useLanguageServer": true,
     "go.enableCodeLens": {
@@ -32,7 +28,6 @@
         "runtest": true
     },
 
-    // rust settings
     "rust-client.channel": "stable",
-    "rust-client.rustupPath": "${env:USERPROFILE}\\.cargo\\bin\\rustup", // expansion of ${env:USERPROFILE} required
+    "rust-client.rustupPath": "${manual:USERPROFILE}\\.cargo\\bin\\rustup",
 }
