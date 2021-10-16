@@ -21,10 +21,10 @@
 
     // git settings
     "git.autofetch": true,
-    "git.path": "${env:USERPROFILE}\\Tools\\Git\\bin\\git.exe", // expansion of ${env:USERPROFILE} requires
+    "git.path": "${env:USERPROFILE}\\Tools\\Git\\bin\\git.exe", // expansion of ${env:USERPROFILE} required
 
     // go settings
-    "go.goroot": "${env:USERPROFILE}\\Tools\\go", // expansion of ${env:USERPROFILE} requires
+    "go.goroot": "${env:USERPROFILE}\\Tools\\go", // expansion of ${env:USERPROFILE} required
     "go.formatTool": "goimports",
     "go.useLanguageServer": true,
     "go.enableCodeLens": {
@@ -34,5 +34,5 @@
 
     // rust settings
     "rust-client.channel": "stable",
-    "rust-client.rustupPath": "${env:USERPROFILE}\\.cargo\\bin\\rustup", // expansion of ${env:USERPROFILE} requires
+    "rust-client.rustupPath": "${env:USERPROFILE}\\.cargo\\bin\\rustup", // expansion of ${env:USERPROFILE} required
 }
