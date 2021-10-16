@@ -2,6 +2,9 @@ PowerScripts
 ================
 A collection of useful PowerShell and Zsh scripts as well as  run commands / dot files / configuration files for power users on Windows and macOS.
 
+# Run Commands / Dot Files / Configuration Files
+The [```rc```](rc/) folder contains various [run commands](https://en.wikipedia.org/wiki/Run_commands) / [dot files](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory#Unix_and_Unix-like_environments) / [configuration files](https://en.wikipedia.org/wiki/Configuration_file) which work on both Windows and macOS.
+
 # Windows
 ## Run Commands / Dot Files / Configuration Files
 The [```_windows_/rc```](_windows_/rc/) folder contains various [run commands](https://en.wikipedia.org/wiki/Run_commands) / [dot files](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory#Unix_and_Unix-like_environments) / [configuration files](https://en.wikipedia.org/wiki/Configuration_file).
