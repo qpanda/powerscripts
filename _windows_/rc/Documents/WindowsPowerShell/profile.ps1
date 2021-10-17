@@ -13,7 +13,7 @@ function prompt {
   Write-Host "@" -foregroundColor cyan -noNewLine
   Write-Host "$env:COMPUTERNAME" -foregroundColor cyan -noNewLine
   Write-Host ":" -noNewLine
-  Write-Host "$(Get-Location)" -foregroundColor blue -noNewLine
+  Write-Host "$(Get-Location | Split-Path -leaf)" -foregroundColor blue -noNewLine
   Write-Host "]" -noNewLine
 
   if ($ok) {
