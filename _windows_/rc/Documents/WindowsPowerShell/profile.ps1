@@ -5,6 +5,8 @@ Set-PSReadLineKeyHandler -Key Ctrl+k -Function DeleteToEnd
 Set-PSReadLineKeyHandler -Key Alt+b -Function ShellBackwardWord
 Set-PSReadLineKeyHandler -Key Alt+f -Function ShellForwardWord
 
+Import-Module Get-ChildItemColor
+
 function prompt {
   $ok = $?
 
@@ -17,10 +19,13 @@ function prompt {
   Write-Host "]" -noNewLine
 
   if ($ok) {
-      Write-Host ">" -foregroundColor green -noNewLine
+    Write-Host ">" -foregroundColor green -noNewLine
   } else {
-      Write-Host ">" -foregroundColor red -noNewLine
+    Write-Host ">" -foregroundColor red -noNewLine
   }
 
   return " "
 }
+
+Set-Alias lls Get-ChildItemColor
+Set-Alias sls Get-ChildItemColorFormatWide
