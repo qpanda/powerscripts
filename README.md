@@ -10,7 +10,7 @@ The [```rc```](rc/) folder contains various [run commands](https://en.wikipedia.
 The [```_windows_/rc```](_windows_/rc/) folder contains various [run commands](https://en.wikipedia.org/wiki/Run_commands) / [dot files](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory#Unix_and_Unix-like_environments) / [configuration files](https://en.wikipedia.org/wiki/Configuration_file).
 
 ### Git
-To get auto completion for Git commands install [posh-git](https://github.com/dahlbyk/posh-git) and then add the following line to [```Documents/WindowsPowerShell/profile.ps1```](_windows_/rc/Documents/WindowsPowerShell/profile.ps1) file.
+To [get auto completion for Git commands](https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-PowerShell) install [posh-git](https://github.com/dahlbyk/posh-git) and then add the following line to [```Documents/WindowsPowerShell/profile.ps1```](_windows_/rc/Documents/WindowsPowerShell/profile.ps1) file.
 
     Import-Module posh-git
 
@@ -82,7 +82,7 @@ The script first determines the width of the widest image and then adjusts all o
 The [```_macos_/rc```](_macos_/rc/) folder contains various [run commands](https://en.wikipedia.org/wiki/Run_commands) / [dot files](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory#Unix_and_Unix-like_environments) / [configuration files](https://en.wikipedia.org/wiki/Configuration_file).
 
 ### Git
-To show Git branch and action information in an additional prompt on the right hand side in Zsh add the following lines to the [```.zshrc```](_macos_/rc/.zshrc) file.
+To [show Git branch and action information](https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Zsh) in an additional prompt on the right hand side in Zsh add the following lines to the [```.zshrc```](_macos_/rc/.zshrc) file.
 
     setopt PROMPT_SUBST
     
