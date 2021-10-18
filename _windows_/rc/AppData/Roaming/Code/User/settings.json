@@ -16,6 +16,7 @@
         "GOROOT":"${env:USERPROFILE}\\Tools\\go",
         "PATH":"${env:PATH};${env:USERPROFILE}\\Tools\\Git\\bin;${env:USERPROFILE}\\Tools\\go\\bin;${env:USERPROFILE}\\.cargo\\bin",
     },
+    "terminal.integrated.automationShell.windows": "cmd.exe",
 
     "git.autofetch": true,
     "git.path": "${manual:USERPROFILE}\\Tools\\Git\\bin\\git.exe",
