@@ -24,6 +24,3 @@ function prompt {
 
   return " "
 }
-
-Set-Alias lls Get-ChildItem
-Set-Alias sls Get-ChildItem | Format-Wide
