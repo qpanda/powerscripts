@@ -9,7 +9,7 @@
         "PowerShell": {
             "source": "PowerShell",
             "icon": "terminal-powershell",
-            "args": ["-NoLogo", "-ExecutionPolicy", "RemoteSigned", "-NoExit", "-Command", "Import-Module posh-git"]
+            "args": ["-NoLogo", "-NoExit", "-Command", "Import-Module posh-git"]
         },
     },
     "terminal.integrated.env.windows": {
