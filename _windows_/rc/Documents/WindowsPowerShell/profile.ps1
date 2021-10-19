@@ -5,6 +5,8 @@ Set-PSReadLineKeyHandler -Key Ctrl+k -Function DeleteToEnd
 Set-PSReadLineKeyHandler -Key Alt+b -Function ShellBackwardWord
 Set-PSReadLineKeyHandler -Key Alt+f -Function ShellForwardWord
 
+Import-Module DirColors
+
 function prompt {
   $ok = $?
 
@@ -23,4 +25,8 @@ function prompt {
   }
 
   return " "
+}
+
+function lls {
+  Get-ChildItem -force -attributes !system
 }
