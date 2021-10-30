@@ -1,0 +1,14 @@
+[
+    {
+        "key": "shift+alt+l",
+        "command": "workbench.action.tasks.reRunTask"
+    },
+    {
+        "key": "shift+alt+t",
+        "command": "workbench.action.tasks.test"
+    },
+    {
+        "key": "shift+alt+e",
+        "command": "workbench.action.tasks.runTask"
+    }
+]
