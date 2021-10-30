@@ -27,6 +27,7 @@
 	me = merge
 	mt = mergetool
 	dt = difftool
+	rv = revert
 [alias]
 	plrb = "pull --rebase"
 	rbin = "rebase --interactive"
@@ -36,6 +37,9 @@
 	cpco = "cherry-pick --continue"
 	cpsk = "cherry-pick --skip"
 	cpab = "cherry-pick --abort"
+	rvco = "revert --continue"
+	rvsk = "revert --skip"
+	rvab = "revert --abort"
 	pufl = "push --force-with-lease"
 	pufo = "push --force"
 	puus = "push --set-upstream"
