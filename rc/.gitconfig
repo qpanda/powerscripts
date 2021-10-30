@@ -28,6 +28,7 @@
 	mt = mergetool
 	dt = difftool
 	rv = revert
+	ta = tag
 [alias]
 	plrb = "pull --rebase"
 	rbin = "rebase --interactive"
