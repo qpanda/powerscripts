@@ -13,7 +13,7 @@ set -eu -o pipefail
 # PARAMETER logfile
 #   path to the logfile (default: '${TMPDIR}/rsync.log')
 # EXAMPLE
-#   $ rsync.ps1 a b
+#   $ rsync.zsh a b
 #     Uses rsync to mirror the directory tree 'a' to 'b'
 ###
 
