@@ -60,8 +60,11 @@
 	dtdd = "difftool --dir-diff"
 [alias]
 	last-commit = "rev-parse --verify HEAD"
-	fixup-commit = "!git commit --fixup $(git last-commit)"
 	current-branch = "rev-parse --abbrev-ref HEAD"
 	current-remote = "remote show"
+	list-tags = "tag --list --sort=version:refname"
+	list-branches = "branch --list --sort=creatordate"
+[alias]
+	fixup-commit = "!git commit --fixup $(git last-commit)"
 	push-upstream = "!git push --set-upstream $(git current-remote) $(git current-branch)"
 	reset-branch = "!git reset --hard $(git current-remote)/$(git current-branch); git clean --force -d"
