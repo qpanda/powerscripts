@@ -38,10 +38,10 @@ if [ $# -ne 1 ]; then
   exit 1
 fi
 
-for item in ${from}/*(DN)
+for item in ${1}/*(DN)
 do
   if [[ -d ${item} ]]; then
-    cp -rf ${item}/ ~
+    cp -rf ${item} ~
     chmod 'go=-rwx' ~/${item:t}
     chmod '=a#' 0 'group:everyone deny delete' ~/${item:t}
   else
