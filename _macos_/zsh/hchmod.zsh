@@ -32,4 +32,4 @@ set -eu -o pipefail
 
 find ~ -type d -maxdepth 1 -not -name 'Desktop' -not -name '.Trash' -print0 | xargs -0 chmod '=a#' 0 'group:everyone deny delete'
 find ~ -type d -maxdepth 1 -not -name 'Public' -print0 | xargs -0 chmod 'go=-rwx'
-find ~ -not -type d -maxdepth 1 -print0 | xargs -0 chmod 'go=-rwx'
+find ~ -not -type d -maxdepth 1 -print0 | xargs -0 chmod -h 'go=-rwx'

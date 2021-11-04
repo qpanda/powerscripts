@@ -46,6 +46,6 @@ do
     chmod '=a#' 0 'group:everyone deny delete' ~/${item:t}
   else
     cp -f ${item} ~
-    chmod 'go=-rwx' ~/${item:t}
+    chmod -h 'go=-rwx' ~/${item:t}
   fi
 done
