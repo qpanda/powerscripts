@@ -104,7 +104,7 @@ Invoke Zsh scripts without arguments to get usage information. Use the following
 [```rsync.zsh```](_macos_/zsh/rsync.zsh) is a Zsh script that uses rsync to mirror a directory tree.
 
 ### home-perms
-[```home-perms.zsh```](_macos_/zsh/home-perms.zsh) is a Zsh script that sets directories and files directly under the user's home directory to be accessible only by the user.
+[```hchmod.zsh```](_macos_/zsh/hchmod.zsh) is a Zsh script that sets directories and files directly under the user's home directory to be accessible only by the user.
 
 # Conventions
 Variables in files that need to be expanded / replaced / set manually are indicated by the naming convention ```${manual:<variable>}```.
