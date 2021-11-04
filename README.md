@@ -103,8 +103,14 @@ Invoke Zsh scripts without arguments to get usage information. Use the following
 ### rsync
 [```rsync.zsh```](_macos_/zsh/rsync.zsh) is a Zsh script that uses rsync to mirror a directory tree.
 
-### home-perms
+### hchmod
 [```hchmod.zsh```](_macos_/zsh/hchmod.zsh) is a Zsh script that sets directories and files directly under the user's home directory to be accessible only by the user.
+
+### hcp
+[```hcp.zsh```](_macos_/zsh/hcp.zsh) is a Zsh script that copies directories and files into the home directory and sets permissions on copied files and directories directly under the user's home directory to be accessible only by the user.
+
+### hmkdir
+[```hmkdir.zsh```](_macos_/zsh/hmkdir.zsh) is a Zsh script to create directories with appropriate permissions in the home directory.
 
 # Conventions
 Variables in files that need to be expanded / replaced / set manually are indicated by the naming convention ```${manual:<variable>}```.

@@ -7,6 +7,10 @@ set -eu -o pipefail
 # DESCRIPTION
 #   hchmod.zsh is a Zsh script that sets directories and files directly under
 #   the user's home directory to be accessible only by the user.
+# EXAMPLE
+#   $ hchmod.zsh
+#     Sets directory and file permissions in home directory so that only the
+#     user can access them
 # NOTE
 #   On macOS files and directories that are part of the default profile and are
 #   directly under the home directory are accessible only to the user. In
@@ -20,9 +24,6 @@ set -eu -o pipefail
 #   
 #   Another approach could be setting ACLs with options file_inherit and
 #   limit_inherit on the home directory.
-# EXAMPLE
-#   $ hchmod.zsh
-#     Sets directory and file permissions in home directory so that only the user can access them
 ###
 
 #

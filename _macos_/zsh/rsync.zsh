@@ -6,8 +6,6 @@ set -eu -o pipefail
 #   rsync, backup, sync
 # DESCRIPTION
 #   rsync.zsh is a Zsh script that uses rsync to mirror a directory tree.
-# NOTE
-#   -
 # PARAMETER source
 #   the source directory
 # PARAMETER destination
@@ -17,6 +15,8 @@ set -eu -o pipefail
 # EXAMPLE
 #   $ rsync.zsh a b
 #     Uses rsync to mirror the directory tree 'a' to 'b'
+# NOTE
+#   -
 ###
 
 #
