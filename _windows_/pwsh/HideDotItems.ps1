@@ -35,6 +35,12 @@ function Log-Status {
     }
 }
 
+function Log-Operation {
+    param([string]$message)
+
+    Write-Host "INFO - ${message}" -noNewline
+}
+
 #
 # MAIN
 #
