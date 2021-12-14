@@ -13,14 +13,19 @@ set -eu -o pipefail
 #     user can access them
 # NOTE
 #   On macOS files and directories that are part of the default profile and are
-#   directly under the home directory are accessible only to the user. In
-#   addition directories are protected from deletion using ACL. This script
+#   directly under the user's home directory are accessible only to the user.
+#   In addition directories are protected from deletion using ACL. This script
 #   sets all files and folders (including newly added ones) directly under the
 #   home directory to have the same (consistent) permissions.
 #   
-#   Changing the umask setting of users (to have newly added files and
+#   Changing the umask setting of users (to have newly created files and
 #   directories get the correct permission) is not recommended. It causes the
 #   installation of certain Adobe software to fail.
+#   
+#   Changing the permissions of the home directory itself is not recommended
+#   because it would break access to the Public folder for file sharing (and
+#   potentially other features that rely on the default permission of the home
+#   directory).
 #   
 #   Another approach could be setting ACLs with options file_inherit and
 #   limit_inherit on the home directory.
