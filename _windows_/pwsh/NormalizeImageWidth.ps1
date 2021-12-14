@@ -3,7 +3,7 @@
     imagemagick, image processing, normalization, identify, mogrify
 .DESCRIPTION
     NormalizeImageWidth.ps1 is a PowerShell script to normalize the width of all images in a folder.
-    
+
     The script first determines the width of the widest image and then adjusts all other images to have the same width.
 .PARAMETER dir
     name or path to the directory containing the images to normalize
@@ -21,7 +21,7 @@
     This PowerShell script requires ImageMagick [1], more specifically the 'identify' [2] and 'mogrify' [3] commands, to be on the path.
 
     This PowerShell script has been developed and tested with version 7.0.10-34 of ImageMagick.
-    
+
     [1] https://imagemagick.org/
     [2] https://imagemagick.org/script/identify.php
     [3] https://imagemagick.org/script/mogrify.php
