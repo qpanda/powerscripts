@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSNavLastRootDirectory</key>
+	<string>~/Temp</string>
+	<key>NSNavLastUserSetHideExtensionButtonState</key>
+	<false/>
+	<key>NSNavPanelExpandedStateForSaveMode</key>
+	<true/>
+	<key>NSWindow Frame NSNavPanelAutosaveName</key>
+	<string>440 369 800 448 0 0 1680 1025 </string>
+	<key>SUEnableAutomaticChecks</key>
+	<false/>
+	<key>SUHasLaunchedBefore</key>
+	<true/>
+	<key>alternateDefaultShortcuts</key>
+	<true/>
+	<key>bottomLeft</key>
+	<dict/>
+	<key>bottomRight</key>
+	<dict/>
+	<key>centerThird</key>
+	<dict/>
+	<key>firstThird</key>
+	<dict>
+		<key>keyCode</key>
+		<integer>123</integer>
+		<key>modifierFlags</key>
+		<integer>1310720</integer>
+	</dict>
+	<key>firstTwoThirds</key>
+	<dict>
+		<key>keyCode</key>
+		<integer>123</integer>
+		<key>modifierFlags</key>
+		<integer>1835008</integer>
+	</dict>
+	<key>larger</key>
+	<dict/>
+	<key>lastThird</key>
+	<dict>
+		<key>keyCode</key>
+		<integer>124</integer>
+		<key>modifierFlags</key>
+		<integer>1310720</integer>
+	</dict>
+	<key>lastTwoThirds</key>
+	<dict>
+		<key>keyCode</key>
+		<integer>124</integer>
+		<key>modifierFlags</key>
+		<integer>1835008</integer>
+	</dict>
+	<key>lastVersion</key>
+	<string>54</string>
+	<key>launchOnLogin</key>
+	<true/>
+	<key>nextDisplay</key>
+	<dict/>
+	<key>previousDisplay</key>
+	<dict/>
+	<key>reflowTodo</key>
+	<dict/>
+	<key>smaller</key>
+	<dict/>
+	<key>subsequentExecutionMode</key>
+	<integer>2</integer>
+	<key>todo</key>
+	<integer>2</integer>
+	<key>topLeft</key>
+	<dict/>
+	<key>topRight</key>
+	<dict/>
+	<key>windowSnapping</key>
+	<integer>2</integer>
+</dict>
+</plist>
