@@ -77,6 +77,9 @@ The script first determines the width of the widest image and then adjusts all o
 ### RunAs
 [```RunAs.ps1```](_windows_/pwsh/RunAs.ps1) is a PowerShell script to invoke another PowerShell scripts with elevated priviledges.
 
+### HideDotItems
+[```HideDotItems.ps1```](_windows_/pwsh/HideDotItems.ps1) is a PowerShell script to set dot files and directories in the user's profile directory to hidden.
+
 ## MacOS
 ## Run Commands / Dot Files / Configuration Files
 The [```_macos_/rc```](_macos_/rc/) folder contains various [run commands](https://en.wikipedia.org/wiki/Run_commands) / [dot files](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory#Unix_and_Unix-like_environments) / [configuration files](https://en.wikipedia.org/wiki/Configuration_file).
