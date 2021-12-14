@@ -58,7 +58,7 @@ function Get-MaxImageWidth {
     $maxImageWidth = 0
     Get-ChildItem -path $dir -recurse -file -name | ForEach-Object {
         $imageWidth = [int](identify.exe -ping -format %w (Join-Path -path $dir -childPath $_) 2>$null)
-        if ($lastExitCode -eq 0 -and $imageWidth -gt $maxImageWidth) {
+        if ($imageWidth -ne 0 -and $imageWidth -gt $maxImageWidth) {
             $maxImageWidth = $imageWidth
         }
     }
@@ -70,8 +70,8 @@ function Normalize-ImageWidth {
     param([string]$dir, [int]$imageWidth)
 
     Get-ChildItem -path $dir -recurse -file -name | ForEach-Object {
-        $imageHeight = identify.exe -ping -format %h (Join-Path -path $dir -childPath $_) 2>$null
-        if ($lastExitCode -eq 0) {
+        $imageHeight = [int](identify.exe -ping -format %h (Join-Path -path $dir -childPath $_) 2>$null)
+        if ($imageHeight -ne 0) {
             Log-Operation -image (Join-Path -path $dir -childPath $_) -imageWidth $imageWidth -imageHeight $imageHeight
             mogrify.exe -gravity $gravity -background $background -extent ${imageWidth}x${imageHeight} (Join-Path -path $dir -childPath $_)
             Log-Status -exitCode $lastExitCode
