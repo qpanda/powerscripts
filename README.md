@@ -2,12 +2,15 @@ PowerScripts
 ================
 A collection of useful PowerShell and Zsh scripts as well as  run commands / dot files / configuration files for power users on Windows and macOS.
 
-# Run Commands / Dot Files / Configuration Files
-The [```rc```](rc/) folder contains various [run commands](https://en.wikipedia.org/wiki/Run_commands) / [dot files](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory#Unix_and_Unix-like_environments) / [configuration files](https://en.wikipedia.org/wiki/Configuration_file) which work on both Windows and macOS.
+# Run Commands / Dot Files
+The [```rc```](rc/) folder contains various [run commands](https://en.wikipedia.org/wiki/Run_commands) / [dot files](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory#Unix_and_Unix-like_environments) for programs which work on both Windows and macOS.
 
 # Windows
-## Run Commands / Dot Files / Configuration Files
-The [```_windows_/rc```](_windows_/rc/) folder contains various [run commands](https://en.wikipedia.org/wiki/Run_commands) / [dot files](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory#Unix_and_Unix-like_environments) / [configuration files](https://en.wikipedia.org/wiki/Configuration_file).
+## Configuration Files
+The [```_windows_/config```](_windows_/config/) folder contains various [configuration files](https://en.wikipedia.org/wiki/Configuration_file) which need to be manually imported into the respective program.
+
+## Run Commands / Dot Files
+The [```_windows_/rc```](_windows_/rc/) folder contains various [run commands](https://en.wikipedia.org/wiki/Run_commands) / [dot files](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory#Unix_and_Unix-like_environments) for programs on Windows.
 
 ### Git
 To [get auto completion for Git commands](https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-PowerShell) install [posh-git](https://github.com/dahlbyk/posh-git) and then add the following line to [```Documents/WindowsPowerShell/profile.ps1```](_windows_/rc/Documents/WindowsPowerShell/profile.ps1) file.
@@ -84,8 +87,11 @@ The script first determines the width of the widest image and then adjusts all o
 [```MinimumImageWidth.ps1```](_windows_/pwsh/MinimumImageWidth.ps1) is a PowerShell script to set the minimum width of all images in a folder.
 
 ## MacOS
-## Run Commands / Dot Files / Configuration Files
-The [```_macos_/rc```](_macos_/rc/) folder contains various [run commands](https://en.wikipedia.org/wiki/Run_commands) / [dot files](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory#Unix_and_Unix-like_environments) / [configuration files](https://en.wikipedia.org/wiki/Configuration_file).
+## Configuration Files
+The [```_macos_/config```](_macos_/config/) folder contains various [configuration files](https://en.wikipedia.org/wiki/Configuration_file) which need to be manually imported into the respective program.
+
+## Run Commands / Dot Files
+The [```_macos_/rc```](_macos_/rc/) folder contains various [run commands](https://en.wikipedia.org/wiki/Run_commands) / [dot files](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory#Unix_and_Unix-like_environments) for programs on macOS.
 
 ### Git
 To [show Git branch and action information](https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Zsh) in an additional prompt on the right hand side in Zsh add the following lines to the [```.zshrc```](_macos_/rc/.zshrc) file.
