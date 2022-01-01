@@ -9,16 +9,14 @@
     name of the device with DCIM file system (default: 'Apple iPhone')
 .PARAMETER dcimPath
     path to the DCIM folder on the device (default: 'Internal Storage\DCIM')
-.PARAMETER dcfFolderSuffix
-    suffix of DCF folders on the device (default: 'APPLE')
 .PARAMETER dcfFilePrefix
     prefix of DCF files on the device (default: 'IMG_')
 .PARAMETER dcfEditFilePrefix
     prefix of edited DCF files on the device (default: 'IMG_E')
-.PARAMETER lastDcfFolderNumber
-    DCF files with a number greater than 'lastDcfFileNumber' from DCF folders with a number equal to or greater than 'lastDcfFolderNumber' will be copied (default: 099, range: [099..999])
+.PARAMETER lastDcfFolder
+    DCF files with a number greater than 'lastDcfFileNumber' from DCF folders equal to or greater than 'lastDcfFolder' will be copied (default: '000')
 .PARAMETER lastDcfFileNumber
-    DCF files with a number greater than 'lastDcfFileNumber' from DCF folders with a number equal to or greater than 'lastDcfFolderNumber' will be copied (default: 0000, range: [0000..9999])
+    DCF files with a number greater than 'lastDcfFileNumber' from DCF folders equal to or greater than 'lastDcfFolder' will be copied (default: 0000, range: [0000..9999])
 .PARAMETER targetPath
     path the DCF files should be copied to - the targetPath folder has to exist
 .PARAMETER photosFolder
@@ -39,27 +37,31 @@
   PS> CopyDcimFiles.ps1 -targetPath temp
     Copies all DCF files from device 'Apple iPhone' to folder 'temp'
 .EXAMPLE
-  PS> CopyDcimFiles.ps1 -targetPath temp -lastDcfFolderNumber 104 -lastDcfFileNumber 4353
-    Copies DCF files with a number greater than 4353 from DCF folders with a number equal to or greater than 104 from device 'Apple iPhone' to folder 'temp'
+  PS> CopyDcimFiles.ps1 -targetPath temp -lastDcfFolder 104APPLE -lastDcfFileNumber 4353
+    Copies DCF files with a number greater than 4353 from DCF folders equal to or greater than '104APPLE' from device 'Apple iPhone' to folder 'temp'
+
+  PS> CopyDcimFiles.ps1 -targetPath temp -lastDcfFolder 202011__ -lastDcfFileNumber 4353
+    Copies DCF files with a number greater than 4353 from DCF folders equal to or greater than '202011__' from device 'Apple iPhone' to folder 'temp'
 .NOTES
     The DCIM file system [1] is a JEITA specification defining the directory structure, file naming method, character set, file format, and metadata format. It is the de facto industry standard for digital still cameras. The file format of DCF conforms to the Exif specification, but the DCF specification also allows use of any other file formats.
 
-    According to the standard DCF folders use numbers in the range [100..999] and DCF files use numbers in the range [0001..9999]. By setting 'lastDcfFolderNumber' to 99 (default) and 'lastDcfFileNumber' to 0000 (default) all DCF files will be copied.
+    According to the standard DCF folders use numbers in the range [100..999] and DCF files use numbers in the range [0001..9999]. By setting 'lastDcfFolder' to '000' (default) and 'lastDcfFileNumber' to 0000 (default) all DCF files will be copied.
+
+    Apple decided to deviate from the specification in recent iOS version and is using a date based folder naming convention.
 
     CopyDcimFiles.ps1 currently has the following limitations:
-      * To copy only files added to the device since the last time CopyDcimFiles.ps1 was used the number of the last DCF folder and DCF file copied need to be noted down. Future versions may use a state file to keep track of the number of the last DCF folder and DCF file copied on a per-device basis.
+      * To copy only files added to the device since the last time CopyDcimFiles.ps1 was used the last DCF folder and DCF file copied need to be noted down. Future versions may use a state file to keep track of the last DCF folder and DCF file copied on a per-device basis.
       * Function Get-TargetFolder requires further work to support file extensions of raw image formats and video file formats from device manufacturers such as Canon, Nikon, GoPro, and DJI.
-      * When files from more than 10 DCF folders are copied the DCF file names are not unique any more and DCF files with duplicated file names will be skipped. Future versions may add a feature to include the DCF folder number in the target DCF file name.
+      * When files from more than 10 DCF folders are copied the DCF file names are not unique any more and DCF files with duplicated file names will be skipped. Future versions may add a feature to include the DCF folder name in the target DCF file name.
 
     [1] https://en.wikipedia.org/wiki/Design_rule_for_Camera_File_system
 #>
 param (
     [string][ValidateNotNullOrEmpty()]$deviceName = "Apple iPhone",
     [string][ValidateScript({(Test-Path -isValid $_) -and (-not [System.IO.Path]::IsPathRooted($_))})]$dcimPath = "Internal Storage\DCIM",
-    [string][ValidateNotNullOrEmpty()]$dcfFolderSuffix = "APPLE",
     [string][ValidateNotNullOrEmpty()]$dcfFilePrefix = "IMG_",
     [string][ValidateNotNullOrEmpty()]$dcfEditFilePrefix = "IMG_E",
-    [int][ValidateRange(99,999)]$lastDcfFolderNumber = 099,
+    [string][ValidateNotNullOrEmpty()]$lastDcfFolder = '000',
     [int][ValidateRange(0,9999)]$lastDcfFileNumber = 0000,
     [string][Parameter(Mandatory=$true)][ValidateScript({Test-Path -pathType container $_})]$targetPath,
     [string][ValidateScript({(Test-Path -isValid $_) -and (-not [System.IO.Path]::IsPathRooted($_))})]$photosFolder = "photos",
@@ -116,49 +118,31 @@ function Get-SubFolder {
 }
 
 function Is-LastDcfFolder {
-    param([string]$dcfFolderSuffix, [int]$lastDcfFolderNumber, [string]$dcfFolder)
+    param([string]$lastDcfFolder, [string]$dcfFolder)
 
-    if ($dcfFolder -imatch "\d{3}${dcfFolderSuffix}") {
-        $dcfFolderNumber = [int]($dcfFolder.Substring(0, 3))
-        return $dcfFolderNumber -eq $lastDcfFolderNumber
-    }
-
-    return $false
+    return $dcfFolder -ieq $lastDcfFolder
 }
 
 function Is-NewDcfFolder {
-    param([string]$dcfFolderSuffix, [int]$lastDcfFolderNumber, [string]$dcfFolder)
+    param([string]$lastDcfFolder, [string]$dcfFolder)
 
-    if ($dcfFolder -imatch "\d{3}${dcfFolderSuffix}") {
-        $dcfFolderNumber = [int]($dcfFolder.Substring(0, 3))
-        return $dcfFolderNumber -gt $lastDcfFolderNumber
-    }
-
-    return $false
+    return $dcfFolder -igt $lastDcfFolder
 }
 
 function Is-OldDcfFolder {
-    param([string]$dcfFolderSuffix, [int]$lastDcfFolderNumber, [string]$dcfFolder)
+    param([string]$lastDcfFolder, [string]$dcfFolder)
 
-    if ($dcfFolder -imatch "\d{3}${dcfFolderSuffix}") {
-        $dcfFolderNumber = [int]($dcfFolder.Substring(0, 3))
-        return $dcfFolderNumber -lt $lastDcfFolderNumber
-    }
-
-    return $false
+    return $dcfFolder -ilt $lastDcfFolder
 }
 
-function Get-MaxDcfFolderNumber {
-    param([string]$dcfFolderSuffix, [int]$maxDcfFolderNumber, [string]$dcfFolder)
+function Get-MaxDcfFolder {
+    param([string]$maxDcfFolder, [string]$dcfFolder)
 
-    if ($dcfFolder -imatch "\d{3}${dcfFolderSuffix}") {
-        $dcfFolderNumber = [int]($dcfFolder.Substring(0, 3))
-        if ($dcfFolderNumber -gt $maxDcfFolderNumber) {
-            return $dcfFolderNumber
-        }
+    if ($dcfFolder -igt $maxDcfFolder) {
+        return $dcfFolder
     }
 
-    return $maxDcfFolderNumber
+    return $maxDcfFolder
 }
 
 function Is-NewNumberedDcfFile {
@@ -325,9 +309,9 @@ function Log-LocalFolderMove {
 }
 
 function Log-MaxDcfFolderAndFileNumber {
-    param([int]$maxDcfFolderNumber, [int]$maxDcfFileNumber)
+    param([string]$maxDcfFolder, [int]$maxDcfFileNumber)
 
-    Write-Host "INFO - Copied DCF files up to and including dcfFolderNumber '$maxDcfFolderNumber' and dcfFileNumber '$maxDcfFileNumber'"
+    Write-Host "INFO - Copied DCF files up to and including dcfFolder '$maxDcfFolder' and dcfFileNumber '$maxDcfFileNumber'"
 }
 
 #
@@ -351,14 +335,14 @@ $targetSidecarsFolder = Create-TargetFolder -targetPath $targetPath -folderName 
 $targetScreenshotsFolder = Create-TargetFolder -targetPath $targetPath -folderName $screenshotsFolder
 $targetOthersFolder = Create-TargetFolder -targetPath $targetPath -folderName $othersFolder
 
-$maxDcfFolderNumber = $lastDcfFolderNumber
+$maxDcfFolder = $lastDcfFolder
 $maxDcfFileNumber = $lastDcfFileNumber
 
 $dcfFolders = @($dcimFolder.GetFolder.items() | Sort-Object -property Name)
 foreach ($dcfFolder in $dcfFolders) {
-    $maxDcfFolderNumber = Get-MaxDcfFolderNumber -dcfFolderSuffix $dcfFolderSuffix -maxDcfFolderNumber $maxDcfFolderNumber -dcfFolder $dcfFolder.Name
+    $maxDcfFolder = Get-MaxDcfFolder -maxDcfFolder $maxDcfFolder -dcfFolder $dcfFolder.Name
 
-    if (Is-LastDcfFolder -dcfFolderSuffix $dcfFolderSuffix -lastDcfFolderNumber $lastDcfFolderNumber -dcfFolder $dcfFolder.Name) {
+    if (Is-LastDcfFolder -lastDcfFolder $lastDcfFolder -dcfFolder $dcfFolder.Name) {
         Log-DeviceFolderCopy -deviceName $deviceName -dcimPath $dcimPath -dcfFolderName $dcfFolder.Name -message "Copying new DCF files from last DCF folder"
 
         $dcfFiles = @($dcfFolder.GetFolder.items() | Sort-Object -property Name)
@@ -380,7 +364,7 @@ foreach ($dcfFolder in $dcfFolders) {
                 Log-FileStatus $IGNORED
             }
         }
-    } elseif (Is-NewDcfFolder -dcfFolderSuffix $dcfFolderSuffix -lastDcfFolderNumber $lastDcfFolderNumber -dcfFolder $dcfFolder.Name) {
+    } elseif (Is-NewDcfFolder -lastDcfFolder $lastDcfFolder -dcfFolder $dcfFolder.Name) {
         Log-DeviceFolderCopy -deviceName $deviceName -dcimPath $dcimPath -dcfFolderName $dcfFolder.Name -message "Copying all DCF files from new DCF folder"
 
         $dcfFiles = @($dcfFolder.GetFolder.items() | Sort-Object -property Name)
@@ -392,7 +376,7 @@ foreach ($dcfFolder in $dcfFolders) {
             $status = Copy-File -file $dcfFile -targetFolder $targetFolder
             Log-FileStatus $status
         }
-    } elseif (Is-OldDcfFolder -dcfFolderSuffix $dcfFolderSuffix -lastDcfFolderNumber $lastDcfFolderNumber -dcfFolder $dcfFolder.Name) {
+    } elseif (Is-OldDcfFolder -lastDcfFolder $lastDcfFolder -dcfFolder $dcfFolder.Name) {
         Log-DeviceFolderCopy -deviceName $deviceName -dcimPath $dcimPath -dcfFolderName $dcfFolder.Name -message "Skipping old DCF folder"
     }    else {
         Log-DeviceFolderCopy -deviceName $deviceName -dcimPath $dcimPath -dcfFolderName $dcfFolder.Name -message "Skipping non DCF folder"
@@ -416,4 +400,4 @@ foreach ($photoFile in $photoFiles) {
     Log-FileStatus -status $status
 }
 
-Log-MaxDcfFolderAndFileNumber -maxDcfFolderNumber $maxDcfFolderNumber -maxDcfFileNumber $maxDcfFileNumber
+Log-MaxDcfFolderAndFileNumber -maxDcfFolder $maxDcfFolder -maxDcfFileNumber $maxDcfFileNumber
