@@ -89,6 +89,9 @@ The script first determines the width of the widest image and then adjusts all o
 ### GitRepositoryBackup
 [```GitRepositoryBackup.ps1```](_windows_/pwsh/GitRepositoryBackup.ps1) is a PowerShell script to backup a Git repository as a Git bundle file.
 
+### MediaTypes
+[```MediaTypes.ps1```](_windows_/pwsh/MediaTypes.ps1) is a PowerShell script to separate DCF files (photos, videos, ...) by type.
+
 ## MacOS
 ## Configuration Files
 The [```_macos_/config```](_macos_/config/) folder contains various [configuration files](https://en.wikipedia.org/wiki/Configuration_file) which need to be manually imported into the respective program.
