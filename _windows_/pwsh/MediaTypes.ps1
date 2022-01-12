@@ -30,11 +30,11 @@
 param (
     [string][ValidateNotNullOrEmpty()]$dcfFilePrefix = "IMG_",
     [string][ValidateNotNullOrEmpty()]$dcfEditFilePrefix = "IMG_E",
-    [string][ValidateScript({(Test-Path -isValid $_) -and (-not [System.IO.Path]::IsPathRooted($_))})]$photosFolder = "Photos",
-    [string][ValidateScript({(Test-Path -isValid $_) -and (-not [System.IO.Path]::IsPathRooted($_))})]$videosFolder = "Videos",
-    [string][ValidateScript({(Test-Path -isValid $_) -and (-not [System.IO.Path]::IsPathRooted($_))})]$screenshotsFolder = "Screenshots",
-    [string][ValidateScript({(Test-Path -isValid $_) -and (-not [System.IO.Path]::IsPathRooted($_))})]$sidecarsFolder = "Sidecars",
-    [string][ValidateScript({(Test-Path -isValid $_) -and (-not [System.IO.Path]::IsPathRooted($_))})]$appsFolder = "Apps"
+    [string][ValidateScript({Test-Path -isValid $_})]$photosFolder = "Photos",
+    [string][ValidateScript({Test-Path -isValid $_})]$videosFolder = "Videos",
+    [string][ValidateScript({Test-Path -isValid $_})]$screenshotsFolder = "Screenshots",
+    [string][ValidateScript({Test-Path -isValid $_})]$sidecarsFolder = "Sidecars",
+    [string][ValidateScript({Test-Path -isValid $_})]$appsFolder = "Apps"
 )
 
 #

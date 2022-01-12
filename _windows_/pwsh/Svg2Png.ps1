@@ -51,9 +51,9 @@ function Log-Operation {
 $path = ${env:Path}
 ${env:Path} = (${env:Path}.Split(';') | Where-Object { $_ -ne "${env:windir}\System32" }) -join ';'
 
-Get-ChildItem -path $dir -filter *.svg -recurse -file -name | ForEach-Object {
-    Log-Operation -svgImage (Join-Path -path $dir -childPath $_) -pngImage (Join-Path -path $dir -childPath ([io.path]::ChangeExtension($_, ".png")))
-    convert.exe -density $density (Join-Path -path $dir -childPath $_) (Join-Path -path $dir -childPath ([io.path]::ChangeExtension($_, ".png"))) 2> $null
+Get-ChildItem -path $dir -filter *.svg -recurse -file | ForEach-Object {
+    Log-Operation -svgImage (Join-Path -path $dir -childPath $_) -pngImage (Join-Path -path $dir -childPath ($_.BaseName + ".png"))
+    convert.exe -density $density (Join-Path -path $dir -childPath $_) (Join-Path -path $dir -childPath ($_.BaseName + ".png")) 2> $null
     Log-Status -exitCode $lastExitCode
 }
 
