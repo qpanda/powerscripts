@@ -50,11 +50,6 @@ During the copy process the type of each DCF file (photo, video, sidecar, screen
 
 > **Note:** This PowerShell script requires ```Administrator``` privileges.
 
-### ChangeNetworkCategory
-[```ChangeNetworkCategory.ps1```](_windows_/pwsh/ChangeNetworkCategory.ps1) is a PowerShell script to change the network category of a [connection profile](https://docs.microsoft.com/en-us/powershell/module/netconnection/?view=win10-ps).
-
-> **Note:** This PowerShell script requires ```Administrator``` privileges.
-
 ### NormalizeImageWidth
 [```NormalizeImageWidth.ps1```](_windows_/pwsh/NormalizeImageWidth.ps1) is a PowerShell script to normalize the width of all images in a folder.
 
@@ -79,9 +74,6 @@ The script first determines the width of the widest image and then adjusts all o
 
 ### RunAs
 [```RunAs.ps1```](_windows_/pwsh/RunAs.ps1) is a PowerShell script to invoke another PowerShell scripts with elevated priviledges.
-
-### HideDotItems
-[```HideDotItems.ps1```](_windows_/pwsh/HideDotItems.ps1) is a PowerShell script to set dot files and directories in the user's profile directory to hidden.
 
 ### MinimumImageWidth
 [```MinimumImageWidth.ps1```](_windows_/pwsh/MinimumImageWidth.ps1) is a PowerShell script to set the minimum width of all images in a folder.
