@@ -117,7 +117,7 @@ Invoke Zsh scripts without arguments to get usage information. Use the following
 [```hchmod.zsh```](_macos_/zsh/hchmod.zsh) is a Zsh script that copies a directory into the home directory and sets permissions on the directory to be accessible only by the user.
 
 ### hcpd
-[```hcpd.zsh```](_macos_/zsh/hcpd.zsh) is a Zsh script that copies a file into the home directory and sets permissions on the file to be accessible only by the user.
+[```hcpd.zsh```](_macos_/zsh/hcpd.zsh) is a Zsh script that copies the content of a directory into the home directory and sets permissions on files and directory copied directly into the home folder to be accessible only by the user.
 
 ### hcpf
 [```hcpf.zsh```](_macos_/zsh/hcpf.zsh) is a Zsh script that copies files into the home directory and sets permissions on copied files to be accessible only by the user.

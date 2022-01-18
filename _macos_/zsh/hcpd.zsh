@@ -5,8 +5,9 @@ set -eu -o pipefail
 # SYNOPSIS
 #   cp, permissions, file system, home directory
 # DESCRIPTION
-#   hcpd.zsh is a Zsh script that copies a directory into the home directory
-#   and sets permissions on the directory to be accessible only by the user.
+#   hcpd.zsh is a Zsh script that copies the content of a directory into the
+#   home directory and sets permissions on files and directory copied directly
+#   into the home folder to be accessible only by the user.
 # PARAMETER dir
 #   path to the directory to copy into the home directory
 # EXAMPLE
@@ -17,8 +18,8 @@ set -eu -o pipefail
 #   On macOS files and directories that are part of the default profile and are
 #   directly under the home directory are accessible only to the user. In
 #   addition directories are protected from deletion using ACL. This script
-#   sets folders copied into the home directory to have the same (consistent)
-#   permissions.
+#   sets files and folders copied into the home directory to have the same
+#   (consistent) permissions.
 #   
 #   Changing the umask setting of users (to have newly added files and
 #   directories get the correct permission) is not recommended. It causes the
