@@ -48,7 +48,7 @@ function Log-Operation {
 # MAIN
 #
 
-$repositoryName = (Split-Path $repositoryUrl -leaf).BaseName
+$repositoryName = (Split-Path $repositoryUrl -leaf)
 $cloneDirectory = Join-Path -path ${env:Temp} -childPath $repositoryName
 $bundleName = "$repositoryName.bundle"
 
