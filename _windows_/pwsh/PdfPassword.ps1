@@ -45,7 +45,8 @@ function Log-Status {
     if ($exitCode -eq 0) {
         Write-Host "OK" -foregroundColor green
     } else {
-        Write-Host "FAILED - $message" -foregroundColor red
+        Write-Host "FAILED" -foregroundColor red
+        Write-Error "$message" -category InvalidOperation -errorAction Stop
     }
 }
 
@@ -87,12 +88,7 @@ if ($op -ieq $ADD) {
     }
 
     $password = Get-Password
-    
-    qpdf.exe --requires-password --password=$password $file
-    if ($lastExitCode -eq 0) {
-        Write-Error "Invalid password for '$file'" -category InvalidOperation -errorAction Stop
-    }
-    
+
     Log-Operation -op $op -file $file
     $message = qpdf.exe --replace-input --decrypt --password=$password $file 2>&1
     Log-Status -exitCode $lastExitCode -message $message
