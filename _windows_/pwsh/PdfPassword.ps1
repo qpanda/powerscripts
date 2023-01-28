@@ -16,7 +16,11 @@
 .NOTES
     This PowerShell script requires the 'qpdf' [1] command to be on the path.
 
-    This PowerShell script will prompt for a password which will be used for both the user and the owner password of the PDF. When password protecting the PDF file will be encrypted with 256-bit AES encryption.
+    When adding password protection to a PDF file the script will prompt for a password which is used as both the user and owner password. The script always uses 256-bit AES encryption to password protect (encrypt) PDF files.
+
+    When removing password protection from a PDF file the script will prompt for a password which needs to match the user and / or owner password of the PDF.
+
+    Prompting for the password avoids leaking the password into the shell history. But the password is still passsed as a command line argument to QPDF which leaks it into the process table. With the current version of QPDF there seems to be no way to read the password from a file when encrypting. For decrypting it is possible to read the password from a file but the added complexity of handling a password file just for decrypting outweighs the benefits for the most common use case, a single user system. It is recommended to use a unique password for each PDF file and most importantly not to reuse a password from an important account.
 
     [1] https://github.com/qpdf/qpdf
 #>
