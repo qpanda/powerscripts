@@ -44,9 +44,12 @@ function Log-Status {
 
     if ($exitCode -eq 0) {
         Write-Host "OK" -foregroundColor green
-    } else {
+    } elseif ($exitCode -eq 2) {
         Write-Host "FAILED" -foregroundColor red
         Write-Error "$message" -category InvalidOperation -errorAction Stop
+    } elseif ($exitCode -eq 3) {
+        Write-Host "WARNING" -foregroundColor yellow
+        Write-Warning "$message"
     }
 }
 
@@ -73,7 +76,7 @@ function Get-Password {
 if ($op -ieq $ADD) {
     qpdf.exe --requires-password $file
     if ($lastExitCode -eq 0) {
-        Write-Error "'$file' is already password protected" -category InvalidOperation -errorAction Stop
+        Write-Error "File '$file' is already password protected (or not a valid PDF)" -category InvalidOperation -errorAction Stop
     }
 
     $password = Get-Password
@@ -84,7 +87,7 @@ if ($op -ieq $ADD) {
 } elseif ($op -ieq $REMOVE) {
     qpdf.exe --requires-password $file
     if ($lastExitCode -eq 2 -or $lastExitCode -eq 3) {
-        Write-Error "'$file' is not password protected" -category InvalidOperation -errorAction Stop
+        Write-Error "File '$file' is not password protected (or not a valid PDF)" -category InvalidOperation -errorAction Stop
     }
 
     $password = Get-Password
