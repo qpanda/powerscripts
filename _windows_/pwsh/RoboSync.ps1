@@ -60,7 +60,7 @@ if (!(Test-Path -pathType container -path $destination)) {
 }
 
 Log-Operation -source (Resolve-Path $source) -destination (Resolve-Path $destination)
-robocopy (Resolve-Path $source) (Resolve-Path $destination) /e /purge /copy:DAT /dcopy:DAT /xj /xa:SH /xd '$RECYCLE.BIN' /xd 'System Volume Information' /r:3 /w:1 /log:${logfile} /fp /v /ns /x /np | out-null
+robocopy (Resolve-Path $source) (Resolve-Path $destination) /e /purge /copy:DAT /dcopy:DAT /xj /xd '$RECYCLE.BIN' /xd 'System Volume Information' /r:3 /w:1 /log:${logfile} /fp /v /ns /x /np | out-null
 Log-Status -exitCode $lastExitCode
 
 if ($summary) {
