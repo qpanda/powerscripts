@@ -51,10 +51,16 @@ function Log-Operation {
 # MAIN
 #
 
-$created = New-Item -itemType "directory" -force -path $destination
+if (!(Test-Path -pathType container -path $destination)) {
+    try {
+        $created = New-Item -itemType "directory" -force -path $destination
+    } catch [Exception] {
+        Write-Error $_ -errorAction Stop
+    }
+}
 
 Log-Operation -source (Resolve-Path $source) -destination (Resolve-Path $destination)
-robocopy (Resolve-Path $source) (Resolve-Path $destination) /e /purge /copy:DAT /dcopy:DAT /xj /xa:SH /mt /r:3 /w:1 /log:${logfile} /fp /v /ns /x /np | out-null
+robocopy (Resolve-Path $source) (Resolve-Path $destination) /e /purge /copy:DAT /dcopy:DAT /xj /xa:SH /xd '$RECYCLE.BIN' /xd 'System Volume Information' /mt /r:3 /w:1 /log:${logfile} /fp /v /ns /x /np | out-null
 Log-Status -exitCode $lastExitCode
 
 if ($summary) {
